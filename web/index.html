@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Electoral Reform</title>
+  <!-- <link rel="stylesheet" href="./css/dashboard.css"> -->
+  <script src="./js/d3.v3.min.js"></script>
+  <script src="./js/queue.js"></script>
+</head>
+
+<style>
+  body {
+    font: 14px sans-serif;
+    padding-top: 20px;
+  }
+
+  #main {
+    margin: 0 auto;
+    width: 1000px;
+  }
+
+  #svg-chart {
+    padding-top: 50px;
+  }
+
+  .prov-label {
+    font-weight: bold;
+  }
+
+  .riding_border {
+    stroke: black;
+    stroke-width: 2;
+    fill: none;
+    /*fill: black;*/
+  }
+</style>
+
+<body>
+  <div id='main'>
+    <h1>Electoral Reform</h1>
+    <div class='dropdown-div'><select id='voting-system-dropdown'></select></div>
+    <svg id='svg-chart'></svg>
+  </div>
+</body>
+
+<script>
+
+var margin = {top: 10, right: 0, bottom: 25, left: 5},
+    width = 1000 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom,
+    block_dim = 15,
+    block_padding = 8,
+    n_rows = 6,
+    prov_x_padding = 20,
+    prov_y_padding = 50,
+    voting_systems = ['FPTP', 'DMP', 'MMP', 'IRV'];
+
+create_dropdown('#voting-system-dropdown', voting_systems);
+
+var party_colours = {'NDP': '#F78320', 'Conservative': '#263893', 'Liberal': '#D71921',
+                     'Green': '#3D9B35', 'Bloc': '#00A7EC', 'Other': 'grey'};
+
+var provs = ['BC', 'AB', 'SK', 'MB', 'ON', 'QC', 'NB', 'NS', 'PE', 'NL', 'YT', 'NT', 'NU'];
+
+var g = d3.select('#svg-chart')
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var q = queue();
+q.defer(d3.csv, './data/fptp_clean.csv', type);
+q.defer(d3.csv, './data/dmp_clean.csv', type);
+q.defer(d3.csv, './data/mmp_clean.csv', type);
+q.defer(d3.csv, './data/irv_clean.csv', type);
+q.await(init);
+
+function init(error, fptp, dmp, mmp, irv) {
+
+  var _fptp = {},
+      _dmp = {},
+      _mmp = {},
+      _irv = {};
+  provs.forEach(function(d) {
+    _fptp[d] = fptp.filter(function(e) { return e.prov_abbr == d; });
+    _dmp[d] = dmp.filter(function(e) { return e.prov_abbr == d; })
+                 .sort(function(a, b) { return a.riding_number - b.riding_number; });
+    _mmp[d] = mmp.filter(function(e) { return e.prov_abbr == d; })
+                .sort(function(a, b) { return a.region_number - b.region_number; });
+    _irv[d] = irv.filter(function(e) { return e.prov_abbr == d; });
+  });
+
+  var dataz = {};
+  dataz['FPTP'] = _fptp;
+  dataz['DMP'] = _dmp;
+  dataz['MMP'] = _mmp;
+  dataz['IRV'] = _irv;
+
+  var prov_g = g.selectAll('g.prov')
+    .data(provs)
+    .enter()
+    .append('g')
+    .attr('class', function(d) { return 'prov ' + d; });
+
+  prov_g.append('text')
+    .attr('class', 'prov-label')
+    .attr('y', -10)
+    .html(function(d) { return d; })
+
+  update(dataz);
+
+  d3.selectAll('select').on('change', function() {
+    update(dataz);
+  });
+
+}
+
+function update(dataz) {
+
+  var sel_system = get_selected_row('#voting-system-dropdown', voting_systems);
+
+  var prov_w = 0;
+  var prov_h = 0;
+
+  provs.forEach(function(prov, i) {
+    if (i != 0) {
+      prov_w += Math.ceil(dataz[sel_system][provs[i-1]].length*1./n_rows)*(block_dim+block_padding) + prov_x_padding;
+    }
+
+    if (i == 4) {
+      prov_h = n_rows*(block_dim+block_padding) + prov_y_padding;
+      prov_w = 0;
+    }
+
+    if (i == 6) {
+      prov_h = 2*(n_rows*(block_dim+block_padding) + prov_y_padding);
+      prov_w = 0;
+    }
+
+    d3.select('.prov.' + prov).attr("transform", "translate(" + prov_w + "," + prov_h + ")" );
+
+  });
+
+  provs.forEach(function(prov) {
+
+    var ridings, regions;
+    if (sel_system == 'FPTP' || sel_system == 'DMP' || sel_system == 'IRV') {
+      ridings = Array.from(new Set(dataz[sel_system][prov].map(function(d) { return d.riding_number; })));
+      regions = [];
+    } else if (sel_system == 'MMP') {
+      regions = Array.from(new Set(dataz[sel_system][prov].map(function(d) { return d.region_number; })));
+      var local_rows = dataz[sel_system][prov].filter(function(d) { return d.seat_type == 'local'});
+      ridings = Array.from(new Set(local_rows.map(function(d) { return d.riding_number; })));
+    }
+
+    var region_borders = d3.select('g.prov.' + prov).selectAll('.region_border').data(regions);
+    var riding_borders = d3.select('g.prov.' + prov).selectAll('.riding_border').data(ridings);
+
+    region_borders.exit().remove();
+    riding_borders.exit().remove();
+
+    region_borders.enter()
+      .append('g')
+      .attr('class', 'region_border ' + dataz[sel_system][prov]['region_number']);
+
+    riding_borders.enter()
+      .append('rect')
+      .attr('class', 'riding_border ' + dataz[sel_system][prov]['riding_number']);
+
+    if (sel_system == 'FPTP' || sel_system == 'IRV') {
+      riding_borders.attr('width', block_dim + 0.5*block_padding)
+        .attr('height', block_dim + 0.5*block_padding)
+        .attr('x', function(_, i) { return (Math.floor(i/n_rows))*(block_dim+block_padding) - 0.25*block_padding; } )
+        .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding) - 0.25*block_padding; })
+    } else if (sel_system == 'DMP') {
+      riding_borders.attr('width', block_dim + 0.5*block_padding)
+      .attr('height', 2*block_dim + 1.5*block_padding)
+        .attr('x', function(_, i) { return (Math.floor(i*2./n_rows))*(block_dim+block_padding) - 0.25*block_padding; } )
+        .attr('y', function(_, i) { return ((2*i)%n_rows)*(block_dim+block_padding) - 0.25*block_padding; })
+    } else if (sel_system == 'MMP') {
+      // region_borders.append('rect')
+    }
+
+    var mps = d3.select('g.prov.' + prov)
+      .selectAll('.mp')
+      .data(dataz[sel_system][prov]);
+
+    mps.exit().remove();
+    mps.enter()
+      .append('rect')
+      .attr('class', 'mp ' + dataz[sel_system][prov]['riding_number']);
+
+    mps.attr('width', block_dim)
+      .attr('height', block_dim)
+      .attr('fill', function(d) { return party_colours[d.party]; })
+      .attr('x', function(_, i) { return (Math.floor(i*1./n_rows))*(block_dim+block_padding); } )
+      .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding)});
+
+  })
+}
+
+function create_dropdown(id, data_list) {
+  var sel = d3.select(id).selectAll('option')
+    .data(data_list, function(d) { return d; })
+    .enter()
+    .append('option')
+    .attr('value', function(d, i) { return i; })
+    .html(function(d) { return d; });
+
+}
+
+function get_selected_row(id, data_list) {
+  if (data_list.length > 0) {
+    var selected_row_index = d3.select(id + " option:checked").attr('value')
+    var selected_row = data_list[selected_row_index];
+    return selected_row;
+  } else {
+    return null;
+  }
+}
+
+function type(d) {
+  d['riding_number'] = +d['riding_number'];
+  return d;
+}
+
+</script>

@@ -1,0 +1,229 @@
+NDP,72
+Green,4
+Liberal,140
+Bloc Quebecois,15
+Conservative,111
+
+British Columbia,NDP,11
+British Columbia,Green,3
+British Columbia,Liberal,15
+British Columbia,Conservative,13
+
+Saskatchewan,NDP,4
+Saskatchewan,Liberal,3
+Saskatchewan,Conservative,7
+
+Prince Edward Island,NDP,1
+Prince Edward Island,Liberal,2
+Prince Edward Island,Conservative,1
+
+Ontario,NDP,21
+Ontario,Liberal,56
+Ontario,Conservative,43
+
+Nova Scotia,NDP,2
+Nova Scotia,Liberal,8
+Nova Scotia,Conservative,2
+
+Quebec,NDP,21
+Quebec,Liberal,29
+Quebec,Bloc Quebecois,15
+Quebec,Conservative,13
+
+New Brunswick,NDP,2
+New Brunswick,Liberal,5
+New Brunswick,Conservative,3
+
+Alberta,NDP,4
+Alberta,Liberal,8
+Alberta,Conservative,22
+
+Manitoba,NDP,2
+Manitoba,Green,1
+Manitoba,Liberal,6
+Manitoba,Conservative,5
+
+Northwest Territories,NDP,1
+Northwest Territories,Liberal,1
+
+Newfoundland,NDP,2
+Newfoundland,Liberal,5
+Newfoundland,Conservative,1
+
+Nunavut,NDP,1
+Nunavut,Liberal,1
+
+Yukon,Liberal,1
+Yukon,Conservative,1
+
+British Columbia,Surrey,Liberal,NDP
+British Columbia,Vancouver Island South,NDP,Green
+British Columbia,Fraser Canyon,Liberal,Conservative
+British Columbia,Abbotsford Area,Conservative,Liberal
+British Columbia,Boundary Bay,Liberal,Conservative
+British Columbia,Cariboo,Conservative,NDP
+British Columbia,North Shore,Liberal,Conservative
+British Columbia,Okanagan Southeast,Conservative,Liberal
+British Columbia,Kootenay,NDP,Conservative
+British Columbia,Vancouver Southeast,Liberal,NDP
+British Columbia,Coquitlam,Liberal,NDP
+British Columbia,Vancouver Island Central,NDP,Green
+British Columbia,Richmond,Liberal,Conservative
+British Columbia,Vancouver Northeast,Liberal,NDP
+British Columbia,Central Coast,Liberal,Conservative
+British Columbia,Vancouver Island Southeast,Green,NDP
+British Columbia,New Westminster Area,NDP,Liberal
+British Columbia,Langley,Liberal,Conservative
+British Columbia,Vancouver West,Liberal,Conservative
+British Columbia,BC North,Conservative,NDP
+British Columbia,Okanagan Southwest,Conservative,Liberal
+Saskatchewan,Moose Jaw Area,Conservative,NDP
+Saskatchewan,Prince Albert Area,Conservative,NDP
+Saskatchewan,Grasslands Area,Conservative,Conservative
+Saskatchewan,Regina,Liberal,Liberal
+Saskatchewan,Saskatoon,Conservative,NDP
+Saskatchewan,Saskatechwan Central East,Conservative,NDP
+Saskatchewan,Saskatechwan Central West,Conservative,Liberal
+Prince Edward Island,Prince Edward Island East,Liberal,NDP
+Prince Edward Island,Prince Edward Island West,Liberal,Conservative
+Ontario,Oxford Area,Conservative,NDP
+Ontario,Ottawa Central,Liberal,NDP
+Ontario,Northumberland Area,Liberal,Conservative
+Ontario,Carleton Area,Liberal,Conservative
+Ontario,Oshawa Area,Conservative,NDP
+Ontario,Ottawa West,Liberal,Conservative
+Ontario,York North,Liberal,Conservative
+Ontario,Kitchener South,Liberal,Conservative
+Ontario,Hamilton Outer,Conservative,Liberal
+Ontario,Oakville Area,Liberal,Conservative
+Ontario,Guelph Area,Liberal,Conservative
+Ontario,Brampton Southwest,Liberal,Conservative
+Ontario,Hamilton Inland,Liberal,NDP
+Ontario,Toronto Central North,Liberal,NDP
+Ontario,Lake Huron,Conservative,Liberal
+Ontario,Vaughan North,Conservative,Liberal
+Ontario,Burlington Area,Liberal,Conservative
+Ontario,Sudbury Area,Liberal,NDP
+Ontario,Aurora,Liberal,Conservative
+Ontario,Kingston Area Northeast,Conservative,Liberal
+Ontario,Kawartha,Conservative,Liberal
+Ontario,Scarborough Northwest,Liberal,Conservative
+Ontario,Kingston Area Northwest,Liberal,NDP
+Ontario,Barrie,Conservative,Liberal
+Ontario,Sault Ste. Marie Area,Liberal,NDP
+Ontario,Hudson Bay,NDP,Liberal
+Ontario,Ottawa East,Liberal,Liberal
+Ontario,Hamilton Waterfront,NDP,Liberal
+Ontario,Norfolk Area,Conservative,Liberal
+Ontario,Scarborough East,Liberal,Liberal
+Ontario,Toronto Central West,Liberal,NDP
+Ontario,Georgian Bay,Conservative,Liberal
+Ontario,London Central,Liberal,Conservative
+Ontario,Markham Southwest,Liberal,Conservative
+Ontario,Vaughan--Brampton,Liberal,Conservative
+Ontario,Caledon,Conservative,Liberal
+Ontario,Brampton Central,Liberal,Conservative
+Ontario,Markham North,Liberal,Conservative
+Ontario,Nipissing,Liberal,Conservative
+Ontario,Mississauga North,Liberal,Conservative
+Ontario,Ajax Area,Liberal,Conservative
+Ontario,Glengarry,Liberal,Conservative
+Ontario,Scarborough West,Liberal,NDP
+Ontario,Don Valley,Liberal,Conservative
+Ontario,Pickering Area,Liberal,Conservative
+Ontario,Toronto Downtown,Liberal,NDP
+Ontario,Kitchener Central,Liberal,NDP
+Ontario,Lambton,Conservative,NDP
+Ontario,Thunder Bay,Liberal,NDP
+Ontario,GTA Lakeshore,Liberal,Conservative
+Ontario,York South,Liberal,Conservative
+Ontario,Mississauga Central East,Liberal,Conservative
+Ontario,Niagara,Liberal,Conservative
+Ontario,Etobicoke,Liberal,Conservative
+Ontario,London Outer,Conservative,NDP
+Ontario,Wellington Area,Conservative,Liberal
+Ontario,Essex Area,Conservative,NDP
+Ontario,Toronto Northeast,Liberal,Conservative
+Ontario,Windsor,NDP,NDP
+Ontario,Toronto Southeast,Liberal,NDP
+Nova Scotia,Nova Scotia Southwest,Liberal,Conservative
+Nova Scotia,Nova Scotia Central East,Liberal,NDP
+Nova Scotia,Nova Scotia Central West,Liberal,Liberal
+Nova Scotia,Cape Breton,Liberal,Liberal
+Nova Scotia,Halifax Harbour,Liberal,Conservative
+Nova Scotia,Halifax,Liberal,NDP
+Quebec,St. Lawrence Northeast,Liberal,Conservative
+Quebec,Quebec Southeast,Liberal,NDP
+Quebec,Trois-Rivieres Area,NDP,Bloc Quebecois
+Quebec,Westmount Area,Liberal,Liberal
+Quebec,Gatineau,Liberal,NDP
+Quebec,Laval East,Liberal,Bloc Quebecois
+Quebec,Quebec City Southeast,Conservative,Conservative
+Quebec,Montarville Area,Liberal,NDP
+Quebec,Quebec Southwest,Liberal,NDP
+Quebec,Laurier Area,NDP,Bloc Quebecois
+Quebec,Quebec Northeast,Bloc Quebecois,Liberal
+Quebec,Quebec City,Liberal,Conservative
+Quebec,Laval West,Liberal,Bloc Quebecois
+Quebec,Longueuil Area,Liberal,NDP
+Quebec,Saint-Jean Area,Liberal,NDP
+Quebec,Cartierville Area,Liberal,NDP
+Quebec,Saint-Laurent Area,Liberal,Conservative
+Quebec,Lacolle Area,Liberal,NDP
+Quebec,Brome,Liberal,Bloc Quebecois
+Quebec,LaSalle,Liberal,NDP
+Quebec,Rosemont Area,NDP,Bloc Quebecois
+Quebec,Quebec North Central,Liberal,Conservative
+Quebec,Joliette--Repentigny,Bloc Quebecois,NDP
+Quebec,Blainville Area,Liberal,NDP
+Quebec,Quebec City Southwest,Conservative,Conservative
+Quebec,Drummond Area,NDP,Bloc Quebecois
+Quebec,Bourassa Area,Liberal,Liberal
+Quebec,Mirabel Area,Bloc Quebecois,NDP
+Quebec,Lower St. Lawrence,NDP,Conservative
+Quebec,Mercier Area,Liberal,Bloc Quebecois
+Quebec,Montcalm--Terrebonne,Bloc Quebecois,NDP
+Quebec,Abitibi,NDP,Liberal
+Quebec,Quebec City Northwest,Conservative,Conservative
+Quebec,Vercheres Area,Liberal,Bloc Quebecois
+Quebec,Quebec City Northeast,Conservative,NDP
+Quebec,Nicolet Area,Bloc Quebecois,Conservative
+Quebec,Vaudreuil Area,Liberal,Bloc Quebecois
+Quebec,Sherbrooke Area,Liberal,NDP
+Quebec,Dollard Area,Liberal,Liberal
+New Brunswick,New Brunswick South,Liberal,Conservative
+New Brunswick,New Brunswick Southwest,Liberal,Conservative
+New Brunswick,New Brunswick North,Liberal,NDP
+New Brunswick,New Brunswick Central,Liberal,Conservative
+New Brunswick,New Brunswick Southeast,Liberal,NDP
+Alberta,Edmonton Northwest,Conservative,Liberal
+Alberta,Alberta Northeast,Conservative,Conservative
+Alberta,Alberta Central West,Conservative,Conservative
+Alberta,Alberta Central North,Conservative,NDP
+Alberta,Alberta Central East,Conservative,Conservative
+Alberta,Alberta Northwest,Conservative,Conservative
+Alberta,Calgary Central North,Conservative,Liberal
+Alberta,Alberta Central South,Conservative,Conservative
+Alberta,Edmonton South,Conservative,Liberal
+Alberta,Calgary Southwest,Conservative,Liberal
+Alberta,Alberta Southeast,Conservative,Conservative
+Alberta,Calgary Northeast,Conservative,Liberal
+Alberta,Calgary Southeast,Conservative,Liberal
+Alberta,Alberta Southwest,Conservative,NDP
+Alberta,Calgary Northwest,Conservative,Liberal
+Alberta,Edmonton Central East,NDP,Liberal
+Alberta,Edmonton Northeast,Conservative,NDP
+Manitoba,Winnipeg West,Liberal,Conservative
+Manitoba,Winnipeg Central North,Liberal,NDP
+Manitoba,Winnipeg Southeast,Liberal,Conservative
+Manitoba,Manitoba Southwest,Conservative,Green
+Manitoba,Manitoba North,Liberal,NDP
+Manitoba,Winnipeg Northeast,Conservative,Liberal
+Manitoba,Manitoba Southeast,Conservative,Liberal
+Northwest Territories,Northwest Territories,Liberal,NDP
+Newfoundland,Newfoundland East,Liberal,Conservative
+Newfoundland,St. John's,Liberal,NDP
+Newfoundland,Labrador,Liberal,NDP
+Newfoundland,Newfoundland West,Liberal,Liberal
+Nunavut,Nunavut,Liberal,NDP
+Yukon,Yukon,Liberal,Conservative

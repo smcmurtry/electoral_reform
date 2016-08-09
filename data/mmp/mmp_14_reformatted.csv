@@ -1,0 +1,30 @@
+Electoral District,prov_abbr,n_local,n_region,BQ,C,Gr,L,ND,In,BQ,C,Gr,L,NDP
+Newfoundland & Labrador 7 (5 + 2) ,NL,5,2,,,,5,,,,1,,0,1
+Prince Edward Island 4 (2+2) ,PE,2,2,,,,2,,,,1,,,1
+Nova Scotia 11 (7 + 4) ,NS,7,4,,,,7,,,,2,,,2
+New Brunswick 10 (6+4),NB,6,4,,,,6,,,,2,,,2
+Montreal 18 (11+7) ,QC,11,7,1,,,8,2,,1,2,1,1,2
+Laval—Lanaudière—Mauricie 12 (8+4) ,QC,8,4,3,,,4,1,,0,2,,0,2
+Montérégie—Estrie—Centre-du-Québec 18 (11+7) ,QC,11,7,0,1,,6,4,,4,1,1,0,1
+Laurentides—Outaouais—Abitibi-Témiscamingue—Nord 11 (7+4),QC,7,4,1,,,4,2,,2,1,0,0,1
+Eastern Quebec 19 (12+7),QC,12,7,1,6,,4,1,,2,,1,1,3
+Eastern Ontario (Ottawa—Peterborough) 19 (12+7) ,ON,12,7,,4,0,8,,,,3,0,1,3
+York—Durham 15 (9+6),ON,9,6,,3,,6,,,,4,,1,1
+Central Toronto—Scarborough 13 (8+5),ON,8,5,,0,0,8,0,,,2,,,3
+North York—Etobicoke 12 (7+5) ,ON,7,5,,,,7,,,,3,,,2
+Peel—Halton 15 (9+6),ON,9,6,,2,,7,,,,4,,,2
+South Central (Hamilton—Niagara—Brant) 12 (7+5) ,ON,7,5,,3,,3,1,,,1,0,2,2
+West Central Ontario (Waterloo—Barrie—Owen Sound) 13 (8+5) ,ON,8,5,,4,,4,,,,1,1,1,2
+Southwestern Ontario (London—Windsor) 13 (8+5),ON,8,5,,4,,1,3,,,1,,4,
+Northern Ontario 9 (6 +3) ,ON,6,3,,,,4,2,,,2,,,1
+Manitoba 14 (9+5): ,MB,9,5, ,3,0,5,1,0,0,2,1,1,1
+Saskatchewan 14 (9+5),SK,9,5,,6,,1,2,,,1,,2,2
+Calgary and South Alberta 18 (11+7) ,AB,11,7,,10,,1,,,,1,1,4,1
+Edmonton and North Alberta 16 (10+6),AB,10,6,,8,,1,1,,,1,,3,2
+Vancouver—Burnaby—North Shore—Maple Ridge 14 (9+5) ,BC,9,5,,,,6,3,,,3,1,,1
+Surrey—Richmond—Abbotsford—Langley 12 (7+5),BC,7,5,,3,,4,0,,,1,1,1,2
+BC Interior and North 9 (6+3),BC,6,3,,3,,1,2,,,,,2,1
+Vancouver Island 7 (4+3),BC,4,3,,,1,,3, ,,1,1,1,
+Yukon ,YT,1,0,,,,1,,,,,,,
+Northwest Territories,NT,1,0,,,,1,, ,,,,,
+Nunavut ,NU,1,0,,,,1,,,,,,,
