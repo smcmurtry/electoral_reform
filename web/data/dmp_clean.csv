@@ -1,343 +1,343 @@
-riding_name,riding_number,prov_abbr,party
-Surrey,0,BC,Liberal
-Vancouver Island South,1,BC,NDP
-Fraser Canyon,2,BC,Liberal
-Abbotsford Area,3,BC,Conservative
-Boundary Bay,4,BC,Liberal
-Cariboo,5,BC,Conservative
-North Shore,6,BC,Liberal
-Okanagan Southeast,7,BC,Conservative
-Kootenay,8,BC,NDP
-Vancouver Southeast,9,BC,Liberal
-Coquitlam,10,BC,Liberal
-Vancouver Island Central,11,BC,NDP
-Richmond,12,BC,Liberal
-Vancouver Northeast,13,BC,Liberal
-Central Coast,14,BC,Liberal
-Vancouver Island Southeast,15,BC,Green
-New Westminster Area,16,BC,NDP
-Langley,17,BC,Liberal
-Vancouver West,18,BC,Liberal
-BC North,19,BC,Conservative
-Okanagan Southwest,20,BC,Conservative
-Moose Jaw Area,21,SK,Conservative
-Prince Albert Area,22,SK,Conservative
-Grasslands Area,23,SK,Conservative
-Regina,24,SK,Liberal
-Saskatoon,25,SK,Conservative
-Saskatechwan Central East,26,SK,Conservative
-Saskatechwan Central West,27,SK,Conservative
-Prince Edward Island East,28,PE,Liberal
-Prince Edward Island West,29,PE,Liberal
-Oxford Area,30,ON,Conservative
-Ottawa Central,31,ON,Liberal
-Northumberland Area,32,ON,Liberal
-Carleton Area,33,ON,Liberal
-Oshawa Area,34,ON,Conservative
-Ottawa West,35,ON,Liberal
-York North,36,ON,Liberal
-Kitchener South,37,ON,Liberal
-Hamilton Outer,38,ON,Conservative
-Oakville Area,39,ON,Liberal
-Guelph Area,40,ON,Liberal
-Brampton Southwest,41,ON,Liberal
-Hamilton Inland,42,ON,Liberal
-Toronto Central North,43,ON,Liberal
-Lake Huron,44,ON,Conservative
-Vaughan North,45,ON,Conservative
-Burlington Area,46,ON,Liberal
-Sudbury Area,47,ON,Liberal
-Aurora,48,ON,Liberal
-Kingston Area Northeast,49,ON,Conservative
-Kawartha,50,ON,Conservative
-Scarborough Northwest,51,ON,Liberal
-Kingston Area Northwest,52,ON,Liberal
-Barrie,53,ON,Conservative
-Sault Ste. Marie Area,54,ON,Liberal
-Hudson Bay,55,ON,NDP
-Ottawa East,56,ON,Liberal
-Hamilton Waterfront,57,ON,NDP
-Norfolk Area,58,ON,Conservative
-Scarborough East,59,ON,Liberal
-Toronto Central West,60,ON,Liberal
-Georgian Bay,61,ON,Conservative
-London Central,62,ON,Liberal
-Markham Southwest,63,ON,Liberal
-Vaughan--Brampton,64,ON,Liberal
-Caledon,65,ON,Conservative
-Brampton Central,66,ON,Liberal
-Markham North,67,ON,Liberal
-Nipissing,68,ON,Liberal
-Mississauga North,69,ON,Liberal
-Ajax Area,70,ON,Liberal
-Glengarry,71,ON,Liberal
-Scarborough West,72,ON,Liberal
-Don Valley,73,ON,Liberal
-Pickering Area,74,ON,Liberal
-Toronto Downtown,75,ON,Liberal
-Kitchener Central,76,ON,Liberal
-Lambton,77,ON,Conservative
-Thunder Bay,78,ON,Liberal
-GTA Lakeshore,79,ON,Liberal
-York South,80,ON,Liberal
-Mississauga Central East,81,ON,Liberal
-Niagara,82,ON,Liberal
-Etobicoke,83,ON,Liberal
-London Outer,84,ON,Conservative
-Wellington Area,85,ON,Conservative
-Essex Area,86,ON,Conservative
-Toronto Northeast,87,ON,Liberal
-Windsor,88,ON,NDP
-Toronto Southeast,89,ON,Liberal
-Nova Scotia Southwest,90,NS,Liberal
-Nova Scotia Central East,91,NS,Liberal
-Nova Scotia Central West,92,NS,Liberal
-Cape Breton,93,NS,Liberal
-Halifax Harbour,94,NS,Liberal
-Halifax,95,NS,Liberal
-St. Lawrence Northeast,96,QC,Liberal
-Quebec Southeast,97,QC,Liberal
-Trois-Rivieres Area,98,QC,NDP
-Westmount Area,99,QC,Liberal
-Gatineau,100,QC,Liberal
-Laval East,101,QC,Liberal
-Quebec City Southeast,102,QC,Conservative
-Montarville Area,103,QC,Liberal
-Quebec Southwest,104,QC,Liberal
-Laurier Area,105,QC,NDP
-Quebec Northeast,106,QC,Bloc
-Quebec City,107,QC,Liberal
-Laval West,108,QC,Liberal
-Longueuil Area,109,QC,Liberal
-Saint-Jean Area,110,QC,Liberal
-Cartierville Area,111,QC,Liberal
-Saint-Laurent Area,112,QC,Liberal
-Lacolle Area,113,QC,Liberal
-Brome,114,QC,Liberal
-LaSalle,115,QC,Liberal
-Rosemont Area,116,QC,NDP
-Quebec North Central,117,QC,Liberal
-Joliette--Repentigny,118,QC,Bloc
-Blainville Area,119,QC,Liberal
-Quebec City Southwest,120,QC,Conservative
-Drummond Area,121,QC,NDP
-Bourassa Area,122,QC,Liberal
-Mirabel Area,123,QC,Bloc
-Lower St. Lawrence,124,QC,NDP
-Mercier Area,125,QC,Liberal
-Montcalm--Terrebonne,126,QC,Bloc
-Abitibi,127,QC,NDP
-Quebec City Northwest,128,QC,Conservative
-Vercheres Area,129,QC,Liberal
-Quebec City Northeast,130,QC,Conservative
-Nicolet Area,131,QC,Bloc
-Vaudreuil Area,132,QC,Liberal
-Sherbrooke Area,133,QC,Liberal
-Dollard Area,134,QC,Liberal
-New Brunswick South,135,NB,Liberal
-New Brunswick Southwest,136,NB,Liberal
-New Brunswick North,137,NB,Liberal
-New Brunswick Central,138,NB,Liberal
-New Brunswick Southeast,139,NB,Liberal
-Edmonton Northwest,140,AB,Conservative
-Alberta Northeast,141,AB,Conservative
-Alberta Central West,142,AB,Conservative
-Alberta Central North,143,AB,Conservative
-Alberta Central East,144,AB,Conservative
-Alberta Northwest,145,AB,Conservative
-Calgary Central North,146,AB,Conservative
-Alberta Central South,147,AB,Conservative
-Edmonton South,148,AB,Conservative
-Calgary Southwest,149,AB,Conservative
-Alberta Southeast,150,AB,Conservative
-Calgary Northeast,151,AB,Conservative
-Calgary Southeast,152,AB,Conservative
-Alberta Southwest,153,AB,Conservative
-Calgary Northwest,154,AB,Conservative
-Edmonton Central East,155,AB,NDP
-Edmonton Northeast,156,AB,Conservative
-Winnipeg West,157,MB,Liberal
-Winnipeg Central North,158,MB,Liberal
-Winnipeg Southeast,159,MB,Liberal
-Manitoba Southwest,160,MB,Conservative
-Manitoba North,161,MB,Liberal
-Winnipeg Northeast,162,MB,Conservative
-Manitoba Southeast,163,MB,Conservative
-Northwest Territories,164,NT,Liberal
-Newfoundland East,165,NL,Liberal
-St. John's,166,NL,Liberal
-Labrador,167,NL,Liberal
-Newfoundland West,168,NL,Liberal
-Nunavut,169,NU,Liberal
-Yukon,170,YT,Liberal
-Surrey,0,BC,NDP
-Vancouver Island South,1,BC,Green
-Fraser Canyon,2,BC,Conservative
-Abbotsford Area,3,BC,Liberal
-Boundary Bay,4,BC,Conservative
-Cariboo,5,BC,NDP
-North Shore,6,BC,Conservative
-Okanagan Southeast,7,BC,Liberal
-Kootenay,8,BC,Conservative
-Vancouver Southeast,9,BC,NDP
-Coquitlam,10,BC,NDP
-Vancouver Island Central,11,BC,Green
-Richmond,12,BC,Conservative
-Vancouver Northeast,13,BC,NDP
-Central Coast,14,BC,Conservative
-Vancouver Island Southeast,15,BC,NDP
-New Westminster Area,16,BC,Liberal
-Langley,17,BC,Conservative
-Vancouver West,18,BC,Conservative
-BC North,19,BC,NDP
-Okanagan Southwest,20,BC,Liberal
-Moose Jaw Area,21,SK,NDP
-Prince Albert Area,22,SK,NDP
-Grasslands Area,23,SK,Conservative
-Regina,24,SK,Liberal
-Saskatoon,25,SK,NDP
-Saskatechwan Central East,26,SK,NDP
-Saskatechwan Central West,27,SK,Liberal
-Prince Edward Island East,28,PE,NDP
-Prince Edward Island West,29,PE,Conservative
-Oxford Area,30,ON,NDP
-Ottawa Central,31,ON,NDP
-Northumberland Area,32,ON,Conservative
-Carleton Area,33,ON,Conservative
-Oshawa Area,34,ON,NDP
-Ottawa West,35,ON,Conservative
-York North,36,ON,Conservative
-Kitchener South,37,ON,Conservative
-Hamilton Outer,38,ON,Liberal
-Oakville Area,39,ON,Conservative
-Guelph Area,40,ON,Conservative
-Brampton Southwest,41,ON,Conservative
-Hamilton Inland,42,ON,NDP
-Toronto Central North,43,ON,NDP
-Lake Huron,44,ON,Liberal
-Vaughan North,45,ON,Liberal
-Burlington Area,46,ON,Conservative
-Sudbury Area,47,ON,NDP
-Aurora,48,ON,Conservative
-Kingston Area Northeast,49,ON,Liberal
-Kawartha,50,ON,Liberal
-Scarborough Northwest,51,ON,Conservative
-Kingston Area Northwest,52,ON,NDP
-Barrie,53,ON,Liberal
-Sault Ste. Marie Area,54,ON,NDP
-Hudson Bay,55,ON,Liberal
-Ottawa East,56,ON,Liberal
-Hamilton Waterfront,57,ON,Liberal
-Norfolk Area,58,ON,Liberal
-Scarborough East,59,ON,Liberal
-Toronto Central West,60,ON,NDP
-Georgian Bay,61,ON,Liberal
-London Central,62,ON,Conservative
-Markham Southwest,63,ON,Conservative
-Vaughan--Brampton,64,ON,Conservative
-Caledon,65,ON,Liberal
-Brampton Central,66,ON,Conservative
-Markham North,67,ON,Conservative
-Nipissing,68,ON,Conservative
-Mississauga North,69,ON,Conservative
-Ajax Area,70,ON,Conservative
-Glengarry,71,ON,Conservative
-Scarborough West,72,ON,NDP
-Don Valley,73,ON,Conservative
-Pickering Area,74,ON,Conservative
-Toronto Downtown,75,ON,NDP
-Kitchener Central,76,ON,NDP
-Lambton,77,ON,NDP
-Thunder Bay,78,ON,NDP
-GTA Lakeshore,79,ON,Conservative
-York South,80,ON,Conservative
-Mississauga Central East,81,ON,Conservative
-Niagara,82,ON,Conservative
-Etobicoke,83,ON,Conservative
-London Outer,84,ON,NDP
-Wellington Area,85,ON,Liberal
-Essex Area,86,ON,NDP
-Toronto Northeast,87,ON,Conservative
-Windsor,88,ON,NDP
-Toronto Southeast,89,ON,NDP
-Nova Scotia Southwest,90,NS,Conservative
-Nova Scotia Central East,91,NS,NDP
-Nova Scotia Central West,92,NS,Liberal
-Cape Breton,93,NS,Liberal
-Halifax Harbour,94,NS,Conservative
-Halifax,95,NS,NDP
-St. Lawrence Northeast,96,QC,Conservative
-Quebec Southeast,97,QC,NDP
-Trois-Rivieres Area,98,QC,Bloc
-Westmount Area,99,QC,Liberal
-Gatineau,100,QC,NDP
-Laval East,101,QC,Bloc
-Quebec City Southeast,102,QC,Conservative
-Montarville Area,103,QC,NDP
-Quebec Southwest,104,QC,NDP
-Laurier Area,105,QC,Bloc
-Quebec Northeast,106,QC,Liberal
-Quebec City,107,QC,Conservative
-Laval West,108,QC,Bloc
-Longueuil Area,109,QC,NDP
-Saint-Jean Area,110,QC,NDP
-Cartierville Area,111,QC,NDP
-Saint-Laurent Area,112,QC,Conservative
-Lacolle Area,113,QC,NDP
-Brome,114,QC,Bloc
-LaSalle,115,QC,NDP
-Rosemont Area,116,QC,Bloc
-Quebec North Central,117,QC,Conservative
-Joliette--Repentigny,118,QC,NDP
-Blainville Area,119,QC,NDP
-Quebec City Southwest,120,QC,Conservative
-Drummond Area,121,QC,Bloc
-Bourassa Area,122,QC,Liberal
-Mirabel Area,123,QC,NDP
-Lower St. Lawrence,124,QC,Conservative
-Mercier Area,125,QC,Bloc
-Montcalm--Terrebonne,126,QC,NDP
-Abitibi,127,QC,Liberal
-Quebec City Northwest,128,QC,Conservative
-Vercheres Area,129,QC,Bloc
-Quebec City Northeast,130,QC,NDP
-Nicolet Area,131,QC,Conservative
-Vaudreuil Area,132,QC,Bloc
-Sherbrooke Area,133,QC,NDP
-Dollard Area,134,QC,Liberal
-New Brunswick South,135,NB,Conservative
-New Brunswick Southwest,136,NB,Conservative
-New Brunswick North,137,NB,NDP
-New Brunswick Central,138,NB,Conservative
-New Brunswick Southeast,139,NB,NDP
-Edmonton Northwest,140,AB,Liberal
-Alberta Northeast,141,AB,Conservative
-Alberta Central West,142,AB,Conservative
-Alberta Central North,143,AB,NDP
-Alberta Central East,144,AB,Conservative
-Alberta Northwest,145,AB,Conservative
-Calgary Central North,146,AB,Liberal
-Alberta Central South,147,AB,Conservative
-Edmonton South,148,AB,Liberal
-Calgary Southwest,149,AB,Liberal
-Alberta Southeast,150,AB,Conservative
-Calgary Northeast,151,AB,Liberal
-Calgary Southeast,152,AB,Liberal
-Alberta Southwest,153,AB,NDP
-Calgary Northwest,154,AB,Liberal
-Edmonton Central East,155,AB,Liberal
-Edmonton Northeast,156,AB,NDP
-Winnipeg West,157,MB,Conservative
-Winnipeg Central North,158,MB,NDP
-Winnipeg Southeast,159,MB,Conservative
-Manitoba Southwest,160,MB,Green
-Manitoba North,161,MB,NDP
-Winnipeg Northeast,162,MB,Liberal
-Manitoba Southeast,163,MB,Liberal
-Northwest Territories,164,NT,NDP
-Newfoundland East,165,NL,Conservative
-St. John's,166,NL,NDP
-Labrador,167,NL,NDP
-Newfoundland West,168,NL,Liberal
-Nunavut,169,NU,NDP
-Yukon,170,YT,Conservative
+riding_name,riding_number,prov_abbr,party,region_number,seat_type
+Surrey,0,BC,Liberal,0,local
+Vancouver Island South,1,BC,NDP,0,local
+Fraser Canyon,2,BC,Liberal,0,local
+Abbotsford Area,3,BC,Conservative,0,local
+Boundary Bay,4,BC,Liberal,0,local
+Cariboo,5,BC,Conservative,0,local
+North Shore,6,BC,Liberal,0,local
+Okanagan Southeast,7,BC,Conservative,0,local
+Kootenay,8,BC,NDP,0,local
+Vancouver Southeast,9,BC,Liberal,0,local
+Coquitlam,10,BC,Liberal,0,local
+Vancouver Island Central,11,BC,NDP,0,local
+Richmond,12,BC,Liberal,0,local
+Vancouver Northeast,13,BC,Liberal,0,local
+Central Coast,14,BC,Liberal,0,local
+Vancouver Island Southeast,15,BC,Green,0,local
+New Westminster Area,16,BC,NDP,0,local
+Langley,17,BC,Liberal,0,local
+Vancouver West,18,BC,Liberal,0,local
+BC North,19,BC,Conservative,0,local
+Okanagan Southwest,20,BC,Conservative,0,local
+Moose Jaw Area,21,SK,Conservative,2,local
+Prince Albert Area,22,SK,Conservative,2,local
+Grasslands Area,23,SK,Conservative,2,local
+Regina,24,SK,Liberal,2,local
+Saskatoon,25,SK,Conservative,2,local
+Saskatechwan Central East,26,SK,Conservative,2,local
+Saskatechwan Central West,27,SK,Conservative,2,local
+Prince Edward Island East,28,PE,Liberal,8,local
+Prince Edward Island West,29,PE,Liberal,8,local
+Oxford Area,30,ON,Conservative,4,local
+Ottawa Central,31,ON,Liberal,4,local
+Northumberland Area,32,ON,Liberal,4,local
+Carleton Area,33,ON,Liberal,4,local
+Oshawa Area,34,ON,Conservative,4,local
+Ottawa West,35,ON,Liberal,4,local
+York North,36,ON,Liberal,4,local
+Kitchener South,37,ON,Liberal,4,local
+Hamilton Outer,38,ON,Conservative,4,local
+Oakville Area,39,ON,Liberal,4,local
+Guelph Area,40,ON,Liberal,4,local
+Brampton Southwest,41,ON,Liberal,4,local
+Hamilton Inland,42,ON,Liberal,4,local
+Toronto Central North,43,ON,Liberal,4,local
+Lake Huron,44,ON,Conservative,4,local
+Vaughan North,45,ON,Conservative,4,local
+Burlington Area,46,ON,Liberal,4,local
+Sudbury Area,47,ON,Liberal,4,local
+Aurora,48,ON,Liberal,4,local
+Kingston Area Northeast,49,ON,Conservative,4,local
+Kawartha,50,ON,Conservative,4,local
+Scarborough Northwest,51,ON,Liberal,4,local
+Kingston Area Northwest,52,ON,Liberal,4,local
+Barrie,53,ON,Conservative,4,local
+Sault Ste. Marie Area,54,ON,Liberal,4,local
+Hudson Bay,55,ON,NDP,4,local
+Ottawa East,56,ON,Liberal,4,local
+Hamilton Waterfront,57,ON,NDP,4,local
+Norfolk Area,58,ON,Conservative,4,local
+Scarborough East,59,ON,Liberal,4,local
+Toronto Central West,60,ON,Liberal,4,local
+Georgian Bay,61,ON,Conservative,4,local
+London Central,62,ON,Liberal,4,local
+Markham Southwest,63,ON,Liberal,4,local
+Vaughan--Brampton,64,ON,Liberal,4,local
+Caledon,65,ON,Conservative,4,local
+Brampton Central,66,ON,Liberal,4,local
+Markham North,67,ON,Liberal,4,local
+Nipissing,68,ON,Liberal,4,local
+Mississauga North,69,ON,Liberal,4,local
+Ajax Area,70,ON,Liberal,4,local
+Glengarry,71,ON,Liberal,4,local
+Scarborough West,72,ON,Liberal,4,local
+Don Valley,73,ON,Liberal,4,local
+Pickering Area,74,ON,Liberal,4,local
+Toronto Downtown,75,ON,Liberal,4,local
+Kitchener Central,76,ON,Liberal,4,local
+Lambton,77,ON,Conservative,4,local
+Thunder Bay,78,ON,Liberal,4,local
+GTA Lakeshore,79,ON,Liberal,4,local
+York South,80,ON,Liberal,4,local
+Mississauga Central East,81,ON,Liberal,4,local
+Niagara,82,ON,Liberal,4,local
+Etobicoke,83,ON,Liberal,4,local
+London Outer,84,ON,Conservative,4,local
+Wellington Area,85,ON,Conservative,4,local
+Essex Area,86,ON,Conservative,4,local
+Toronto Northeast,87,ON,Liberal,4,local
+Windsor,88,ON,NDP,4,local
+Toronto Southeast,89,ON,Liberal,4,local
+Nova Scotia Southwest,90,NS,Liberal,7,local
+Nova Scotia Central East,91,NS,Liberal,7,local
+Nova Scotia Central West,92,NS,Liberal,7,local
+Cape Breton,93,NS,Liberal,7,local
+Halifax Harbour,94,NS,Liberal,7,local
+Halifax,95,NS,Liberal,7,local
+St. Lawrence Northeast,96,QC,Liberal,5,local
+Quebec Southeast,97,QC,Liberal,5,local
+Trois-Rivieres Area,98,QC,NDP,5,local
+Westmount Area,99,QC,Liberal,5,local
+Gatineau,100,QC,Liberal,5,local
+Laval East,101,QC,Liberal,5,local
+Quebec City Southeast,102,QC,Conservative,5,local
+Montarville Area,103,QC,Liberal,5,local
+Quebec Southwest,104,QC,Liberal,5,local
+Laurier Area,105,QC,NDP,5,local
+Quebec Northeast,106,QC,Bloc,5,local
+Quebec City,107,QC,Liberal,5,local
+Laval West,108,QC,Liberal,5,local
+Longueuil Area,109,QC,Liberal,5,local
+Saint-Jean Area,110,QC,Liberal,5,local
+Cartierville Area,111,QC,Liberal,5,local
+Saint-Laurent Area,112,QC,Liberal,5,local
+Lacolle Area,113,QC,Liberal,5,local
+Brome,114,QC,Liberal,5,local
+LaSalle,115,QC,Liberal,5,local
+Rosemont Area,116,QC,NDP,5,local
+Quebec North Central,117,QC,Liberal,5,local
+Joliette--Repentigny,118,QC,Bloc,5,local
+Blainville Area,119,QC,Liberal,5,local
+Quebec City Southwest,120,QC,Conservative,5,local
+Drummond Area,121,QC,NDP,5,local
+Bourassa Area,122,QC,Liberal,5,local
+Mirabel Area,123,QC,Bloc,5,local
+Lower St. Lawrence,124,QC,NDP,5,local
+Mercier Area,125,QC,Liberal,5,local
+Montcalm--Terrebonne,126,QC,Bloc,5,local
+Abitibi,127,QC,NDP,5,local
+Quebec City Northwest,128,QC,Conservative,5,local
+Vercheres Area,129,QC,Liberal,5,local
+Quebec City Northeast,130,QC,Conservative,5,local
+Nicolet Area,131,QC,Bloc,5,local
+Vaudreuil Area,132,QC,Liberal,5,local
+Sherbrooke Area,133,QC,Liberal,5,local
+Dollard Area,134,QC,Liberal,5,local
+New Brunswick South,135,NB,Liberal,6,local
+New Brunswick Southwest,136,NB,Liberal,6,local
+New Brunswick North,137,NB,Liberal,6,local
+New Brunswick Central,138,NB,Liberal,6,local
+New Brunswick Southeast,139,NB,Liberal,6,local
+Edmonton Northwest,140,AB,Conservative,1,local
+Alberta Northeast,141,AB,Conservative,1,local
+Alberta Central West,142,AB,Conservative,1,local
+Alberta Central North,143,AB,Conservative,1,local
+Alberta Central East,144,AB,Conservative,1,local
+Alberta Northwest,145,AB,Conservative,1,local
+Calgary Central North,146,AB,Conservative,1,local
+Alberta Central South,147,AB,Conservative,1,local
+Edmonton South,148,AB,Conservative,1,local
+Calgary Southwest,149,AB,Conservative,1,local
+Alberta Southeast,150,AB,Conservative,1,local
+Calgary Northeast,151,AB,Conservative,1,local
+Calgary Southeast,152,AB,Conservative,1,local
+Alberta Southwest,153,AB,Conservative,1,local
+Calgary Northwest,154,AB,Conservative,1,local
+Edmonton Central East,155,AB,NDP,1,local
+Edmonton Northeast,156,AB,Conservative,1,local
+Winnipeg West,157,MB,Liberal,3,local
+Winnipeg Central North,158,MB,Liberal,3,local
+Winnipeg Southeast,159,MB,Liberal,3,local
+Manitoba Southwest,160,MB,Conservative,3,local
+Manitoba North,161,MB,Liberal,3,local
+Winnipeg Northeast,162,MB,Conservative,3,local
+Manitoba Southeast,163,MB,Conservative,3,local
+Northwest Territories,164,NT,Liberal,11,local
+Newfoundland East,165,NL,Liberal,9,local
+St. John's,166,NL,Liberal,9,local
+Labrador,167,NL,Liberal,9,local
+Newfoundland West,168,NL,Liberal,9,local
+Nunavut,169,NU,Liberal,12,local
+Yukon,170,YT,Liberal,10,local
+Surrey,0,BC,NDP,0,local
+Vancouver Island South,1,BC,Green,0,local
+Fraser Canyon,2,BC,Conservative,0,local
+Abbotsford Area,3,BC,Liberal,0,local
+Boundary Bay,4,BC,Conservative,0,local
+Cariboo,5,BC,NDP,0,local
+North Shore,6,BC,Conservative,0,local
+Okanagan Southeast,7,BC,Liberal,0,local
+Kootenay,8,BC,Conservative,0,local
+Vancouver Southeast,9,BC,NDP,0,local
+Coquitlam,10,BC,NDP,0,local
+Vancouver Island Central,11,BC,Green,0,local
+Richmond,12,BC,Conservative,0,local
+Vancouver Northeast,13,BC,NDP,0,local
+Central Coast,14,BC,Conservative,0,local
+Vancouver Island Southeast,15,BC,NDP,0,local
+New Westminster Area,16,BC,Liberal,0,local
+Langley,17,BC,Conservative,0,local
+Vancouver West,18,BC,Conservative,0,local
+BC North,19,BC,NDP,0,local
+Okanagan Southwest,20,BC,Liberal,0,local
+Moose Jaw Area,21,SK,NDP,2,local
+Prince Albert Area,22,SK,NDP,2,local
+Grasslands Area,23,SK,Conservative,2,local
+Regina,24,SK,Liberal,2,local
+Saskatoon,25,SK,NDP,2,local
+Saskatechwan Central East,26,SK,NDP,2,local
+Saskatechwan Central West,27,SK,Liberal,2,local
+Prince Edward Island East,28,PE,NDP,8,local
+Prince Edward Island West,29,PE,Conservative,8,local
+Oxford Area,30,ON,NDP,4,local
+Ottawa Central,31,ON,NDP,4,local
+Northumberland Area,32,ON,Conservative,4,local
+Carleton Area,33,ON,Conservative,4,local
+Oshawa Area,34,ON,NDP,4,local
+Ottawa West,35,ON,Conservative,4,local
+York North,36,ON,Conservative,4,local
+Kitchener South,37,ON,Conservative,4,local
+Hamilton Outer,38,ON,Liberal,4,local
+Oakville Area,39,ON,Conservative,4,local
+Guelph Area,40,ON,Conservative,4,local
+Brampton Southwest,41,ON,Conservative,4,local
+Hamilton Inland,42,ON,NDP,4,local
+Toronto Central North,43,ON,NDP,4,local
+Lake Huron,44,ON,Liberal,4,local
+Vaughan North,45,ON,Liberal,4,local
+Burlington Area,46,ON,Conservative,4,local
+Sudbury Area,47,ON,NDP,4,local
+Aurora,48,ON,Conservative,4,local
+Kingston Area Northeast,49,ON,Liberal,4,local
+Kawartha,50,ON,Liberal,4,local
+Scarborough Northwest,51,ON,Conservative,4,local
+Kingston Area Northwest,52,ON,NDP,4,local
+Barrie,53,ON,Liberal,4,local
+Sault Ste. Marie Area,54,ON,NDP,4,local
+Hudson Bay,55,ON,Liberal,4,local
+Ottawa East,56,ON,Liberal,4,local
+Hamilton Waterfront,57,ON,Liberal,4,local
+Norfolk Area,58,ON,Liberal,4,local
+Scarborough East,59,ON,Liberal,4,local
+Toronto Central West,60,ON,NDP,4,local
+Georgian Bay,61,ON,Liberal,4,local
+London Central,62,ON,Conservative,4,local
+Markham Southwest,63,ON,Conservative,4,local
+Vaughan--Brampton,64,ON,Conservative,4,local
+Caledon,65,ON,Liberal,4,local
+Brampton Central,66,ON,Conservative,4,local
+Markham North,67,ON,Conservative,4,local
+Nipissing,68,ON,Conservative,4,local
+Mississauga North,69,ON,Conservative,4,local
+Ajax Area,70,ON,Conservative,4,local
+Glengarry,71,ON,Conservative,4,local
+Scarborough West,72,ON,NDP,4,local
+Don Valley,73,ON,Conservative,4,local
+Pickering Area,74,ON,Conservative,4,local
+Toronto Downtown,75,ON,NDP,4,local
+Kitchener Central,76,ON,NDP,4,local
+Lambton,77,ON,NDP,4,local
+Thunder Bay,78,ON,NDP,4,local
+GTA Lakeshore,79,ON,Conservative,4,local
+York South,80,ON,Conservative,4,local
+Mississauga Central East,81,ON,Conservative,4,local
+Niagara,82,ON,Conservative,4,local
+Etobicoke,83,ON,Conservative,4,local
+London Outer,84,ON,NDP,4,local
+Wellington Area,85,ON,Liberal,4,local
+Essex Area,86,ON,NDP,4,local
+Toronto Northeast,87,ON,Conservative,4,local
+Windsor,88,ON,NDP,4,local
+Toronto Southeast,89,ON,NDP,4,local
+Nova Scotia Southwest,90,NS,Conservative,7,local
+Nova Scotia Central East,91,NS,NDP,7,local
+Nova Scotia Central West,92,NS,Liberal,7,local
+Cape Breton,93,NS,Liberal,7,local
+Halifax Harbour,94,NS,Conservative,7,local
+Halifax,95,NS,NDP,7,local
+St. Lawrence Northeast,96,QC,Conservative,5,local
+Quebec Southeast,97,QC,NDP,5,local
+Trois-Rivieres Area,98,QC,Bloc,5,local
+Westmount Area,99,QC,Liberal,5,local
+Gatineau,100,QC,NDP,5,local
+Laval East,101,QC,Bloc,5,local
+Quebec City Southeast,102,QC,Conservative,5,local
+Montarville Area,103,QC,NDP,5,local
+Quebec Southwest,104,QC,NDP,5,local
+Laurier Area,105,QC,Bloc,5,local
+Quebec Northeast,106,QC,Liberal,5,local
+Quebec City,107,QC,Conservative,5,local
+Laval West,108,QC,Bloc,5,local
+Longueuil Area,109,QC,NDP,5,local
+Saint-Jean Area,110,QC,NDP,5,local
+Cartierville Area,111,QC,NDP,5,local
+Saint-Laurent Area,112,QC,Conservative,5,local
+Lacolle Area,113,QC,NDP,5,local
+Brome,114,QC,Bloc,5,local
+LaSalle,115,QC,NDP,5,local
+Rosemont Area,116,QC,Bloc,5,local
+Quebec North Central,117,QC,Conservative,5,local
+Joliette--Repentigny,118,QC,NDP,5,local
+Blainville Area,119,QC,NDP,5,local
+Quebec City Southwest,120,QC,Conservative,5,local
+Drummond Area,121,QC,Bloc,5,local
+Bourassa Area,122,QC,Liberal,5,local
+Mirabel Area,123,QC,NDP,5,local
+Lower St. Lawrence,124,QC,Conservative,5,local
+Mercier Area,125,QC,Bloc,5,local
+Montcalm--Terrebonne,126,QC,NDP,5,local
+Abitibi,127,QC,Liberal,5,local
+Quebec City Northwest,128,QC,Conservative,5,local
+Vercheres Area,129,QC,Bloc,5,local
+Quebec City Northeast,130,QC,NDP,5,local
+Nicolet Area,131,QC,Conservative,5,local
+Vaudreuil Area,132,QC,Bloc,5,local
+Sherbrooke Area,133,QC,NDP,5,local
+Dollard Area,134,QC,Liberal,5,local
+New Brunswick South,135,NB,Conservative,6,local
+New Brunswick Southwest,136,NB,Conservative,6,local
+New Brunswick North,137,NB,NDP,6,local
+New Brunswick Central,138,NB,Conservative,6,local
+New Brunswick Southeast,139,NB,NDP,6,local
+Edmonton Northwest,140,AB,Liberal,1,local
+Alberta Northeast,141,AB,Conservative,1,local
+Alberta Central West,142,AB,Conservative,1,local
+Alberta Central North,143,AB,NDP,1,local
+Alberta Central East,144,AB,Conservative,1,local
+Alberta Northwest,145,AB,Conservative,1,local
+Calgary Central North,146,AB,Liberal,1,local
+Alberta Central South,147,AB,Conservative,1,local
+Edmonton South,148,AB,Liberal,1,local
+Calgary Southwest,149,AB,Liberal,1,local
+Alberta Southeast,150,AB,Conservative,1,local
+Calgary Northeast,151,AB,Liberal,1,local
+Calgary Southeast,152,AB,Liberal,1,local
+Alberta Southwest,153,AB,NDP,1,local
+Calgary Northwest,154,AB,Liberal,1,local
+Edmonton Central East,155,AB,Liberal,1,local
+Edmonton Northeast,156,AB,NDP,1,local
+Winnipeg West,157,MB,Conservative,3,local
+Winnipeg Central North,158,MB,NDP,3,local
+Winnipeg Southeast,159,MB,Conservative,3,local
+Manitoba Southwest,160,MB,Green,3,local
+Manitoba North,161,MB,NDP,3,local
+Winnipeg Northeast,162,MB,Liberal,3,local
+Manitoba Southeast,163,MB,Liberal,3,local
+Northwest Territories,164,NT,NDP,11,local
+Newfoundland East,165,NL,Conservative,9,local
+St. John's,166,NL,NDP,9,local
+Labrador,167,NL,NDP,9,local
+Newfoundland West,168,NL,Liberal,9,local
+Nunavut,169,NU,NDP,12,local
+Yukon,170,YT,Conservative,10,local

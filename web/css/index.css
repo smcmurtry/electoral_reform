@@ -1,0 +1,31 @@
+body {
+  font: 14px sans-serif;
+  padding-top: 20px;
+}
+
+#main {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+#svg-chart {
+  padding-top: 50px;
+}
+
+.prov-label {
+  font-weight: bold;
+}
+
+.riding_border {
+  stroke: black;
+  stroke-width: 2;
+  fill: none;
+  /*fill: black;*/
+}
+
+.region .region_border {
+  stroke: grey;
+  stroke-width: 0;
+  /*stroke-dasharray: 4,2;*/
+  fill: none;
+}
