@@ -46,3 +46,8 @@ body {
 .dropdown-div option {
   font: 16px sans-serif;
 }
+
+/*hide them all initially*/
+.FPTP, .DMP, .MMP, .IRV {
+  display: none;
+}

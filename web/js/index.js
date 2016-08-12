@@ -1,7 +1,7 @@
 var margin = {top: 0, right: 160, bottom: 25, left: 5},
     page_w = 900,
     width = page_w - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom,
+    height = 600 - margin.top - margin.bottom,
     block_dim = 15,
     block_padding = 8,
     n_rows = 6,
@@ -87,6 +87,13 @@ function init(error, fptp, dmp, mmp, irv) {
 function update(dataz) {
 
   var sel_system = get_selected_row('#voting-system-dropdown', voting_systems);
+
+  // show/hide text
+  d3.selectAll('.' + sel_system).style('display', 'block');
+  voting_systems.filter(function(d) { return d.abbr != sel_system; }).forEach(function(d) {
+    d3.selectAll('.' + d.abbr).style('display', 'none');
+  });
+
   var prov_width = {};
 
   if (sel_system == 'MMP') {
