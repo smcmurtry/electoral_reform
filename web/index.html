@@ -10,8 +10,33 @@
 <body>
   <div id='main'>
     <h1>Electoral Reform</h1>
-    <div class='dropdown-div'><select id='voting-system-dropdown'></select></div>
-    <svg id='svg-chart'></svg>
+
+    <div class='dropdown-div'>Choose a voting system: <select id='voting-system-dropdown'></select></div>
+
+    <div class='section'>
+      <h2>How would the 2015 election have turned out?</h2>
+      <div id='chart' class='chart'>
+        <svg id='svg-chart'></svg>
+        <div class='legend'></div>
+      </div>
+    </div>
+
+    <div class='section'>
+      <h2>How Proportional is the Result?</h2>
+    </div>
+
+    <div class='section'>
+      <h2>Sources</h2>
+      <p>
+        Results for each voting system for the 2015 election are the result of simulation using Elections Canada data. MMP Results were provided by <a href='http://wilfday.blogspot.ca/'>Wilf Day</a>. <a href='http://www.threehundredeight.com/2015/11/riding-results-with-preferential-ballot.html'>Instant Runoff Voting results</a> were provided by <a href='http://www.threehundredeight.com/'>Eric Grenier</a>. Dual Member Proportional results were provided by <a href='http://rhysgoldstein.com/'>Rhys Goldstien</a>. <a href='http://www.elections.ca/content.aspx?section=res&dir=rep/off/42gedata&document=summary&lang=e'>First Past the Post results</a> were obtained from <a href='http://www.elections.ca/home.aspx'>Elections Canada</a>.
+      </p>
+      <p>
+        Visualization created by <a href='http://stephenmcmurtry.org/'>Stephen McMurtry</a>.
+      </p>
+
+    </div>
+
+
   </div>
 </body>
 

@@ -5,7 +5,6 @@ body {
 
 #main {
   margin: 0 auto;
-  width: 1000px;
 }
 
 #svg-chart {
@@ -28,4 +27,22 @@ body {
   stroke-width: 0;
   /*stroke-dasharray: 4,2;*/
   fill: none;
+}
+
+.mp.NDP { fill: #F78320; }
+.mp.Conservative { fill: #263893; }
+.mp.Liberal { fill: #D71921; }
+.mp.Green { fill: #3D9B35; }
+.mp.Bloc { fill: #00A7EC; }
+.mp.Other { fill: grey; }
+
+.chart {
+  position: relative;
+}
+
+.legend {
+}
+
+.dropdown-div option {
+  font: 16px sans-serif;
 }
