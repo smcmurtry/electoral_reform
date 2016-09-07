@@ -1,7 +1,6 @@
 var blocks = function() {
 
   var margin = {top: 0, right: 160, bottom: 25, left: 5},
-      page_w = 900,
       width = page_w - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom,
       block_dim = 15,
@@ -11,18 +10,11 @@ var blocks = function() {
       prov_y_padding = 50,
       region_label_y_padding = 30;
 
-
-  d3.select('#main').style('width', page_w + 'px');
-
-  create_dropdown('#voting-system-dropdown', voting_systems);
-
   var g = d3.select('#svg-chart')
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
 
   function init(error, fptp, dmp, mmp, irv) {
 
@@ -51,12 +43,6 @@ var blocks = function() {
       // .attr('y', -2*block_padding)
       .html(function(d) { return d; })
 
-    update(dataz);
-
-    d3.selectAll('select').on('change', function() {
-      update(dataz);
-    });
-
     var legend_entries = [
       {label: 'Liberal MP', class: 'Liberal', type: 'mp'},
       {label: 'Conservative MP', class: 'Conservative', type: 'mp'},
@@ -68,11 +54,11 @@ var blocks = function() {
 
     draw_legend('#chart', legend_entries);
 
+    return dataz;
+
   }
 
-  function update(dataz) {
-
-    var sel_system = get_selected_row('#voting-system-dropdown', voting_systems);
+  function update(dataz, sel_system) {
 
     // show/hide text
     d3.selectAll('.' + sel_system).style('display', 'block');
@@ -220,27 +206,6 @@ var blocks = function() {
     });
   }
 
-  function create_dropdown(id, data_list) {
-    var sel = d3.select(id)
-      .selectAll('option')
-      .data(data_list)
-      .enter()
-      .append('option')
-      .attr('value', function(d, i) { return i; })
-      .html(function(d) { return d.label; });
-
-  }
-
-  function get_selected_row(id, data_list) {
-    if (data_list.length > 0) {
-      var selected_row_index = d3.select(id + " option:checked").attr('value')
-      var selected_row = data_list[selected_row_index].abbr;
-      return selected_row;
-    } else {
-      return null;
-    }
-  }
-
   function type(d) {
     d['riding_number'] = +d['riding_number'];
     d['region_number'] = +d['region_number'];
@@ -305,7 +270,8 @@ var blocks = function() {
 
 return {
         init: init,
-        type: type
+        type: type,
+        update: update
     };
 
 }();

@@ -1,13 +1,28 @@
+d3.select('#main').style('width', page_w + 'px');
 
+create_dropdown('#voting-system-dropdown', voting_systems);
+create_dropdown('#region-dropdown', regions);
 
-var q = queue();
-q.defer(d3.csv, './data/fptp_clean.csv', blocks.type);
-q.defer(d3.csv, './data/dmp_clean.csv', blocks.type);
-q.defer(d3.csv, './data/mmp_clean.csv', blocks.type);
-q.defer(d3.csv, './data/irv_clean.csv', blocks.type);
-q.await(blocks.init);
+d3.queue()
+  .defer(d3.csv, './data/fptp_clean.csv', blocks.type)
+  .defer(d3.csv, './data/dmp_clean.csv', blocks.type)
+  .defer(d3.csv, './data/mmp_clean.csv', blocks.type)
+  .defer(d3.csv, './data/irv_clean.csv', blocks.type)
+  .defer(d3.csv, './data/summary.csv', bars.type)
+  .awaitAll(
+    function(error, files) {
+      var dataz = blocks.init(error, files[0], files[1], files[2], files[3]);
+      bars.init(error, files[4]);
 
+      d3.selectAll('select').on('change', update_all);
+      update_all();
 
-var q2 = queue();
-q2.defer(d3.csv, './data/summary.csv', bars.type);
-q2.await(bars.init);
+      function update_all() {
+        var sel_system = get_selected_row('#voting-system-dropdown', voting_systems);
+        var sel_region = get_selected_row('#region-dropdown', regions);
+
+        blocks.update(dataz, sel_system);
+        bars.update(files[4], sel_system, sel_region);
+      }
+
+  });

@@ -29,18 +29,15 @@ body {
   fill: none;
 }
 
-.mp.NDP { fill: #F78320; }
-.mp.Conservative { fill: #263893; }
-.mp.Liberal { fill: #D71921; }
-.mp.Green { fill: #3D9B35; }
-.mp.Bloc { fill: #00A7EC; }
-.mp.Other { fill: grey; }
+.NDP { fill: #F78320; }
+.Conservative { fill: #263893; }
+.Liberal { fill: #D71921; }
+.Green { fill: #3D9B35; }
+.Bloc { fill: #00A7EC; }
+.Other { fill: grey; }
 
 .chart {
   position: relative;
-}
-
-.legend {
 }
 
 .dropdown-div option {
