@@ -1,6 +1,6 @@
 var blocks = function() {
 
-  var margin = {top: 0, right: 160, bottom: 25, left: 5},
+  var margin = {top: 50, right: 160, bottom: 25, left: 5},
       width = page_w - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom,
       block_dim = 15,
@@ -10,11 +10,7 @@ var blocks = function() {
       prov_y_padding = 50,
       region_label_y_padding = 30;
 
-  var g = d3.select('#svg-chart')
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  var g = create_g('#block-chart', width, height, margin);
 
   function init(error, fptp, dmp, mmp, irv) {
 

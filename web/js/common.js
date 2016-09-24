@@ -34,3 +34,13 @@ function get_selected_row(id, data_list) {
     return null;
   }
 }
+
+function create_g(id, width, height, margin) {
+
+  return d3.select(id)
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+}
