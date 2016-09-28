@@ -40,15 +40,11 @@ var blocks = function() {
       .html(function(d) { return d; })
 
     var legend_entries = [
-      {label: 'Liberal MP', class: 'Liberal', type: 'mp'},
-      {label: 'Conservative MP', class: 'Conservative', type: 'mp'},
-      {label: 'NDP MP', class: 'NDP', type: 'mp'},
-      {label: 'Bloc Quebecois MP', class: 'Bloc', type: 'mp'},
-      {label: 'Green MP', class: 'Green', type: 'mp'},
+      {label: 'MP', class: 'black', type: 'mp'},
       {label: 'Riding', class: 'x', type: 'riding_border'}
     ];
 
-    draw_legend('#chart', legend_entries);
+    draw_legend('#chart', legend_entries, margin.right, block_dim, block_padding);
 
     return dataz;
 
@@ -94,7 +90,6 @@ var blocks = function() {
       var region_x_translate = 0;
       regions.forEach(function(region_number, i) {
 
-        var rg = d3.select('g.region.r' + region_number);
         var region_rows = prov_rows.filter(function(d) { return d.region_number == region_number; });
         var ridings = Array.from(new Set(region_rows.map(function(d) { return d.riding_number; })));
         if (sel_system == 'MMP') {
@@ -111,14 +106,9 @@ var blocks = function() {
           region_h = region_rows.length*(block_dim+block_padding) + 1.*block_padding;
         }
 
-        rg.append('rect')
-          .attr('class', 'region_border')
-          .attr('width', region_w)
-          .attr('height', region_h)
-          .attr('x', -1*block_padding)
-          .attr('y', -1*block_padding)
+        var rg = d3.select('g.region.r' + region_number)
+          .attr("transform", "translate(" + region_x_translate + "," + 0 + ")" );
 
-        rg.attr("transform", "translate(" + region_x_translate + "," + 0 + ")" );
         region_x_translate += region_w;
 
         var local_seat_rows = region_rows.filter(function(d) { return d.seat_type == 'local'; });
@@ -133,38 +123,8 @@ var blocks = function() {
 
         var sorted_seat_rows = local_seat_rows.concat(regional_seat_rows);
 
-        var riding_borders = rg.selectAll('.riding_border').data(ridings);
-
-        riding_borders.exit().remove();
-
-        riding_borders.enter()
-          .append('rect')
-          .attr('class', function(d) { return 'riding_border ' + d; });
-
-        riding_borders.attr('width', block_dim + 0.5*block_padding);
-
-        if (sel_system == 'DMP') {
-          riding_borders.attr('height', 2*block_dim + 1.5*block_padding)
-            .attr('x', function(_, i) { return (Math.floor(i*2./n_rows))*(block_dim+block_padding) - 0.25*block_padding; } )
-            .attr('y', function(_, i) { return ((2*i)%n_rows)*(block_dim+block_padding) - 0.25*block_padding; });
-        } else {
-          riding_borders.attr('height', block_dim + 0.5*block_padding)
-            .attr('x', function(_, i) { return (Math.floor(i/n_rows))*(block_dim+block_padding) - 0.25*block_padding; } )
-            .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding) - 0.25*block_padding; });
-        }
-
-        var mps = rg.selectAll('.mp').data(sorted_seat_rows);
-
-        mps.exit().remove();
-
-        mps.enter()
-          .append('rect')
-          .attr('class', function(d) { return 'mp ' + d.party; });
-
-        mps.attr('width', block_dim)
-          .attr('height', block_dim)
-          .attr('x', function(_, i) { return (Math.floor(i*1./n_rows))*(block_dim+block_padding); } )
-          .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding)});
+        update_riding_borders(rg, ridings, sel_system);
+        update_mps(rg, sorted_seat_rows);
 
       });
       prov_width[prov] = region_x_translate;
@@ -174,94 +134,73 @@ var blocks = function() {
 
   }
 
+  function update_riding_borders(g, data, sel_system) {
+    var riding_borders = g.selectAll('.riding_border').data(data);
+
+    riding_borders.exit().remove();
+
+    riding_borders.enter()
+      .append('rect')
+      .attr('class', function(d) { return 'riding_border ' + d; });
+
+    riding_borders.attr('width', block_dim + 0.5*block_padding);
+
+    if (sel_system == 'DMP') {
+      riding_borders.attr('height', 2*block_dim + 1.5*block_padding)
+        .attr('x', function(_, i) { return (Math.floor(i*2./n_rows))*(block_dim+block_padding) - 0.25*block_padding; } )
+        .attr('y', function(_, i) { return ((2*i)%n_rows)*(block_dim+block_padding) - 0.25*block_padding; });
+    } else {
+      riding_borders.attr('height', block_dim + 0.5*block_padding)
+        .attr('x', function(_, i) { return (Math.floor(i/n_rows))*(block_dim+block_padding) - 0.25*block_padding; } )
+        .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding) - 0.25*block_padding; });
+    }
+  }
+
+  function update_mps(g, data) {
+
+    var mps = g.selectAll('.mp').data(data);
+
+    mps.exit().remove();
+
+    mps.enter()
+      .append('rect')
+      .attr('class', function(d) { return 'mp ' + d.party; });
+
+    mps.attr('width', block_dim)
+      .attr('height', block_dim)
+      .attr('x', function(_, i) { return (Math.floor(i*1./n_rows))*(block_dim+block_padding); } )
+      .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding)});
+  }
+
 
   function set_provs_translate(provs, dataz, sel_system, prov_width) {
-    var prov_w = 0;
-    var prov_h = 0;
-    var y_padding = (sel_system == 'MMP') ? prov_y_padding + region_label_y_padding : prov_y_padding;
+    var y_padding = (sel_system == 'MMP') ? prov_y_padding + region_label_y_padding : prov_y_padding,
+        prov_translate = {},
+        left_pos = 0,
+        top_pos = 0;
 
-    provs.forEach(function(prov, i) {
-      if (i != 0) {
-        prov_w += prov_width[provs[i-1]] + prov_x_padding;
-      }
+    provs.forEach(function(prov) {
+      var right_pos = left_pos + prov_width[prov];
 
-      if (i == 4) {
-        prov_h = n_rows*(block_dim+block_padding) + y_padding;
-        prov_w = 0;
+      if (right_pos > page_w) {
+        left_pos = 0;
+        top_pos += n_rows*(block_dim+block_padding) + y_padding;
+        prov_translate[prov] = [left_pos, top_pos];
+      } else {
+        prov_translate[prov] = [left_pos, top_pos];
       }
+      left_pos += prov_width[prov] + prov_x_padding;
 
-      if (i == 5) {
-        prov_h = 2*(n_rows*(block_dim+block_padding) + y_padding);
-        prov_w = 0;
-      }
-      // if (i == 6) {
-      //   prov_h = 3*(n_rows*(block_dim+block_padding) + y_padding);
-      //   prov_w = 0;
-      // }
-      d3.select('.prov.' + prov).attr("transform", "translate(" + prov_w + "," + prov_h + ")" );
+      d3.select('.prov.' + prov).attr("transform", "translate(" + prov_translate[prov][0] + "," + prov_translate[prov][1] + ")" );
+
     });
+
   }
 
   function type(d) {
     d['riding_number'] = +d['riding_number'];
     d['region_number'] = +d['region_number'];
     return d;
-  }
-
-  function draw_legend(id, entries) {
-
-    var svg_w = block_dim+block_padding,
-        svg_h = block_dim+block_padding;
-
-    var legend_div = d3.select(id + ' .legend')
-      .style('width', margin.right + 'px')
-      .style('position', 'absolute')
-      .style('left', (width+margin.left + 10) + 'px' )
-      .style('top', '20px' )
-
-      entries.forEach(function(d, i) {
-        var entry = legend_div.append('div')
-          .attr('class', 'entries')
-          .style('position', 'relative')
-          .style('width', margin.right + 'px')
-          .style('margin-bottom', '5px')
-
-        entry.append('div')
-          .attr('class', 'text')
-          .style('width', (margin.right - svg_w - 5) + 'px')
-          .style('padding-left', (svg_w + 5) + 'px')
-          .style('size', block_dim + 'px')
-          .style('line-height', (block_dim+block_padding) + 'px')
-          .html(d.label)
-
-        var g = entry.append('div')
-          .style('position', 'absolute')
-          .style('width', svg_w + 'px')
-          .style('top', '0px')
-          .attr('class', 'swatch')
-          .append('svg')
-          .attr('width', svg_w)
-          .attr('height', svg_h)
-          .append('g')
-
-        if (d.type == 'mp') {
-          g.append('rect')
-          .attr('x', 0.5*block_padding)
-          .attr('width', block_dim)
-          .attr('y', 0.5*block_padding)
-          .attr('height', block_dim)
-          .attr('class', d.type + ' ' + d.class);
-
-        } else if (d.type == 'riding_border') {
-          g.append('rect')
-          .attr('x', 0.25*block_padding)
-          .attr('width', block_dim + 0.5*block_padding)
-          .attr('y', 0.25*block_padding)
-          .attr('height', block_dim + 0.5*block_padding)
-          .attr('class', d.type + ' ' + d.class);
-        }
-    })
-
   }
 
 return {

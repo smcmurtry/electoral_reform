@@ -1,6 +1,6 @@
 var bars = function() {
 
-  var margin = {top: 30, right: 0, bottom: 0, left: 90},
+  var margin = {top: 20, right: 0, bottom: 0, left: 0},
       width = page_w - margin.left - margin.right,
       height = 50 - margin.top - margin.bottom,
       bar_h = 30,
@@ -19,22 +19,16 @@ var bars = function() {
   }
 
   function init(error, data) {
-    // add titles
+    var legend_entries = [
+      {label: 'Liberal', class: 'Liberal', type: 'mp'},
+      {label: 'Conservative', class: 'Conservative', type: 'mp'},
+      {label: 'NDP', class: 'NDP', type: 'mp'},
+      {label: 'Bloc Quebecois', class: 'Bloc', type: 'mp'},
+      {label: 'Green', class: 'Green', type: 'mp'},
+      {label: 'Other', class: 'Other', type: 'mp'}
+    ];
 
-    d3.select('#chart2 .title')
-      .style('width', margin.left + 'px')
-      .style('position', 'absolute')
-      .style('top', (margin.top) + 'px' )
-      .append('div')
-      .html('Share of MPs');
-
-    d3.select('#chart3 .title')
-      .style('width', margin.left + 'px')
-      .style('position', 'absolute')
-      .style('top', (margin.top) + 'px' )
-      .append('div')
-      .html('Share of Vote');
-
+    draw_legend('#section2', legend_entries, width, 0.5*bar_h, 0.5*bar_padding);
   }
 
   function update(data, sel_system, sel_region) {
@@ -83,9 +77,8 @@ var bars = function() {
       labels.enter().append('text');
       labels.exit().remove();
 
-      labels
-        .attr('y', -5)
-        .style('stroke', 'black')
+      labels.attr('y', -5)
+        // .style('stroke', 'black')
         .attr('text-anchor', 'middle')
         .html(function(d) {
           if (d.value > 0.02) {

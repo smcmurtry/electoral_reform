@@ -5,6 +5,8 @@ body {
 
 #main {
   margin: 0 auto;
+  width: 90%;
+  max-width: 900px;
 }
 
 #svg-chart {
@@ -35,6 +37,7 @@ body {
 .Green { fill: #3D9B35; }
 .Bloc { fill: #00A7EC; }
 .Other { fill: grey; }
+.black { fill: black; }
 
 .chart {
   position: relative;
@@ -47,4 +50,23 @@ body {
 /*hide them all initially*/
 .FPTP, .DMP, .MMP, .IRV {
   display: none;
+}
+
+.title {
+  margin-bottom: 0px;
+}
+
+.legend {
+  width: 100%;
+}
+
+#section2 .legend {
+  padding-top: 20px;
+  height: 30px;
+}
+#section2 .legend .entries {
+  padding-right: 15px;
+}
+#chart .legend .entries {
+  padding-right: 15px;
 }

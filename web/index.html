@@ -17,7 +17,7 @@
     <div class='dropdown-div'>Choose a voting system: <select id='voting-system-dropdown'></select></div>
 
     <div class='section'>
-      <h2>How does it work?</h2>
+      <h2>How does <span id='system-title'>it</span> work?</h2>
       <p class='FPTP'>
         A first-past-the-post voting system is one in which voters are required to indicate on the ballot the candidate of their choice, and the candidate who receives more votes than any other candidate wins. The first-past-the-post voting method is one of the several plurality voting systems. It is a common, but not universal, feature of voting systems with single member electoral divisions. The system is widely used in the United Kingdom and United States, most of their current and former colonies and protectorates, and a few other countries. From <a href='https://en.wikipedia.org/wiki/First-past-the-post_voting'>Wikipedia</a>.
       </p>
@@ -33,31 +33,28 @@
 
     </div>
 
-    <div class='section'>
-      <h2>What would the ballot look like?</h2>
-    </div>
-
-    <div class='section'>
-      <h2>How proportional is the result?</h2>
+    <div class='section' id='section2'>
+      <h2>What if we'd used this system in 2015?</h2>
+      <p>If the share of MPs elected is close to the share of the vote each party recieves, then the voting system is proportional.</p>
       <div class='dropdown-div'><select id='region-dropdown'></select></div>
-
+      <div class='legend'></div>
       <div id='chart2' class='chart'>
-        <div class='title'></div>
+        <h3 class='title'>Share of MPs</h3>
         <svg id='bar-chart-1'></svg>
       </div>
-      
+
       <div id='chart3' class='chart'>
-        <div class='title'></div>
+        <h3 class='title'>Share of Vote</h3>
         <svg id='bar-chart-2'></svg>
       </div>
 
     </div>
 
     <div class='section'>
-      <h2>How would the 2015 election have turned out?</h2>
+      <h3>How would seats have been distributed in <span id='region-title'></span>?</h3>
       <div id='chart' class='chart'>
-        <svg id='block-chart'></svg>
         <div class='legend'></div>
+        <svg id='block-chart'></svg>
       </div>
     </div>
 

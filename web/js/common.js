@@ -1,4 +1,5 @@
-var page_w = 900;
+// var page_w = 900;
+var page_w = +d3.select('#main').style('width').slice(0,-2);
 
 var voting_systems = [
   {label: 'First Past the Post', abbr: 'FPTP'},
@@ -43,4 +44,57 @@ function create_g(id, width, height, margin) {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+}
+
+function draw_legend(id, entries, width, block_dim, block_padding) {
+
+  var svg_w = block_dim+block_padding,
+      svg_h = block_dim+block_padding;
+
+  var legend_div = d3.select(id + ' .legend');
+  legend_div.style('width', width + 'px');
+
+  entries.forEach(function(d, i) {
+    var entry = legend_div.append('div')
+      .attr('class', 'entries')
+      .style('position', 'relative')
+      .style('float', 'left')
+      // .style('width', width + 'px')
+      .style('margin-bottom', '5px')
+
+    entry.append('div')
+      .attr('class', 'text')
+      // .style('width', (width - svg_w - 5) + 'px')
+      .style('padding-left', (svg_w + 5) + 'px')
+      .style('size', block_dim + 'px')
+      .style('line-height', (block_dim+block_padding) + 'px')
+      .html(d.label);
+
+    var g = entry.append('div')
+      .style('position', 'absolute')
+      .style('width', svg_w + 'px')
+      .style('top', '0px')
+      .attr('class', 'swatch')
+      .append('svg')
+      .attr('width', svg_w)
+      .attr('height', svg_h)
+      .append('g')
+
+    if (d.type == 'mp') {
+      g.append('rect')
+      .attr('x', 0.5*block_padding)
+      .attr('width', block_dim)
+      .attr('y', 0.5*block_padding)
+      .attr('height', block_dim)
+      .attr('class', d.type + ' ' + d.class);
+
+    } else if (d.type == 'riding_border') {
+      g.append('rect')
+      .attr('x', 0.25*block_padding)
+      .attr('width', block_dim + 0.5*block_padding)
+      .attr('y', 0.25*block_padding)
+      .attr('height', block_dim + 0.5*block_padding)
+      .attr('class', d.type + ' ' + d.class);
+    }
+  })
 }

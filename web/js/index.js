@@ -1,5 +1,3 @@
-d3.select('#main').style('width', page_w + 'px');
-
 create_dropdown('#voting-system-dropdown', voting_systems);
 create_dropdown('#region-dropdown', regions);
 
@@ -20,6 +18,9 @@ d3.queue()
       function update_all() {
         var sel_system = get_selected_row('#voting-system-dropdown', voting_systems);
         var sel_region = get_selected_row('#region-dropdown', regions);
+
+        d3.select('#system-title').html(sel_system);
+        d3.select('#region-title').html(sel_region);
 
         blocks.update(dataz, sel_system);
         bars.update(files[4], sel_system, sel_region);
