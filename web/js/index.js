@@ -22,7 +22,7 @@ d3.queue()
         d3.select('#system-title').html(sel_system);
         d3.select('#region-title').html(sel_region);
 
-        blocks.update(dataz, sel_system);
+        blocks.update(dataz, sel_system, sel_region);
         bars.update(files[4], sel_system, sel_region);
       }
 

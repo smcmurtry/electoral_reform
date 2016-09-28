@@ -50,7 +50,7 @@ var blocks = function() {
 
   }
 
-  function update(dataz, sel_system) {
+  function update(dataz, sel_system, sel_region) {
 
     // show/hide text
     d3.selectAll('.' + sel_system).style('display', 'block');
@@ -130,7 +130,7 @@ var blocks = function() {
       prov_width[prov] = region_x_translate;
 
     })
-    set_provs_translate(provs, dataz, sel_system, prov_width);
+    set_provs_translate(provs, dataz, prov_width, sel_system, sel_region);
 
   }
 
@@ -172,30 +172,48 @@ var blocks = function() {
       .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding)});
   }
 
-
-  function set_provs_translate(provs, dataz, sel_system, prov_width) {
+  function set_provs_translate(provs, dataz, prov_width, sel_system, sel_region) {
     var y_padding = (sel_system == 'MMP') ? prov_y_padding + region_label_y_padding : prov_y_padding,
         prov_translate = {},
         left_pos = 0,
-        top_pos = 0;
+        top_pos = 0,
+        provs_to_show;
+
+    if (sel_region == 'Canada') {
+      provs_to_show = provs;
+    } else {
+      provs_to_show = [sel_region];
+    }
 
     provs.forEach(function(prov) {
-      var right_pos = left_pos + prov_width[prov];
 
-      if (right_pos > page_w) {
-        left_pos = 0;
-        top_pos += n_rows*(block_dim+block_padding) + y_padding;
-        prov_translate[prov] = [left_pos, top_pos];
+      if (provs_to_show.indexOf(prov) < 0) {
+        d3.select('.prov.' + prov)
+          .style('display', 'none');
       } else {
-        prov_translate[prov] = [left_pos, top_pos];
-      }
-      left_pos += prov_width[prov] + prov_x_padding;
+        var right_pos = left_pos + prov_width[prov];
 
-      d3.select('.prov.' + prov).attr("transform", "translate(" + prov_translate[prov][0] + "," + prov_translate[prov][1] + ")" );
+        if (right_pos > page_w) {
+          left_pos = 0;
+          top_pos += n_rows*(block_dim+block_padding) + y_padding;
+          prov_translate[prov] = [left_pos, top_pos];
+        } else {
+          prov_translate[prov] = [left_pos, top_pos];
+        }
 
-    });
+        left_pos += prov_width[prov] + prov_x_padding;
 
-  }
+        d3.select('.prov.' + prov)
+          .style('display', 'block')
+          .attr("transform", "translate(" + prov_translate[prov][0] + "," + prov_translate[prov][1] + ")" );
+
+      }}
+    );
+
+      var bottom_pos = top_pos + n_rows*(block_dim+block_padding) + y_padding;
+      d3.select('#block-chart').attr("height", bottom_pos + margin.top + margin.bottom);
+
+    }
 
   function type(d) {
     d['riding_number'] = +d['riding_number'];
