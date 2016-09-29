@@ -44,7 +44,7 @@ var blocks = function() {
       {label: 'Riding', class: 'x', type: 'riding_border'}
     ];
 
-    draw_legend('#chart', legend_entries, margin.right, block_dim, block_padding);
+    draw_legend('#chart', legend_entries, page_w, block_dim, block_padding);
 
     return dataz;
 

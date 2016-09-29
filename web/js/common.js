@@ -20,9 +20,9 @@ var regions = [
   {label: 'Quebec', 'abbr': 'QC'},
   {label: 'New Brunswick', 'abbr': 'NB'},
   {label: 'Nova Scotia', 'abbr': 'NS'},
-  {label: 'PEI', 'abbr': 'PE'},
-  {label: 'Newfoundland', 'abbr': 'NL'},
-  {label: 'Yukon Territory', 'abbr': 'YT'},
+  {label: 'Prince Edward Island', 'abbr': 'PE'},
+  {label: 'Newfoundland and Labrador', 'abbr': 'NL'},
+  {label: 'Yukon', 'abbr': 'YT'},
   {label: 'Northwest Territories', 'abbr': 'NT'},
   {label: 'Nunavut', 'abbr': 'NU'}
 ];

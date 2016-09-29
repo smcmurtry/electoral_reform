@@ -2,6 +2,7 @@ body {
   /*font: 14px sans-serif;*/
   font-family: 'Roboto', sans-serif;
   padding-top: 20px;
+  background-color: #FCFCFC;
 }
 
 #main {
@@ -77,4 +78,37 @@ body {
 
 #bar-charts {
   padding-top: 20px;
+}
+
+select {
+  display: block;
+
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+  text-transform: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  height: 3rem;
+}
+
+label {
+  font-size: 0.8rem;
+  /*color: #9e9e9e;*/
+  color: grey;
+}
+
+
+select:disabled {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+select:focus {
+  outline: 1px solid #c9f3ef;
 }
