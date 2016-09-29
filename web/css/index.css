@@ -96,6 +96,11 @@ select {
   border: 1px solid #f2f2f2;
   border-radius: 2px;
   height: 3rem;
+  color: steelblue;
+}
+
+.changeable {
+  color: steelblue;
 }
 
 label {
@@ -103,7 +108,6 @@ label {
   /*color: #9e9e9e;*/
   color: grey;
 }
-
 
 select:disabled {
   color: rgba(0, 0, 0, 0.3);
