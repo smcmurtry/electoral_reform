@@ -5,7 +5,7 @@ body {
 
 #main {
   margin: 0 auto;
-  width: 90%;
+  width: 95%;
   max-width: 900px;
 }
 
@@ -54,6 +54,8 @@ body {
 
 .title {
   margin-bottom: 0px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .legend {
@@ -62,11 +64,16 @@ body {
 
 #section2 .legend {
   padding-top: 20px;
-  height: 30px;
+  overflow: auto;
 }
+
 #section2 .legend .entries {
   padding-right: 15px;
 }
 #chart .legend .entries {
   padding-right: 15px;
+}
+
+#bar-charts {
+  padding-top: 20px;
 }

@@ -12,6 +12,8 @@ var bars = function() {
 
   var g1 = create_g('#bar-chart-1', width, height, margin);
   var g2 = create_g('#bar-chart-2', width, height, margin);
+  d3.select('#bar-chart-1').style('position', 'relative').style('top', (-margin.top) + 'px');
+  d3.select('#bar-chart-2').style('position', 'relative').style('top', (-margin.top) + 'px');
 
   function type(d) {
     d['value'] = +d['value'];
@@ -23,7 +25,7 @@ var bars = function() {
       {label: 'Liberal', class: 'Liberal', type: 'mp'},
       {label: 'Conservative', class: 'Conservative', type: 'mp'},
       {label: 'NDP', class: 'NDP', type: 'mp'},
-      {label: 'Bloc Quebecois', class: 'Bloc', type: 'mp'},
+      {label: 'Bloc Québécois', class: 'Bloc', type: 'mp'},
       {label: 'Green', class: 'Green', type: 'mp'},
       {label: 'Other', class: 'Other', type: 'mp'}
     ];
@@ -73,13 +75,16 @@ var bars = function() {
     add_labels(g2, pop_rows, x_positions_pop);
 
     function add_labels(g, rows, x_positions) {
+
       var labels = g.selectAll('text').data(rows, function(d) { return d.party; });
       labels.enter().append('text');
       labels.exit().remove();
 
-      labels.attr('y', -5)
+      var text_height = +labels.style('font-size').slice(0,-2);
+
+      labels.attr('y', -0.25*text_height)
         // .style('stroke', 'black')
-        .attr('text-anchor', 'middle')
+        .attr('text-anchor', 'end')
         .html(function(d) {
           if (d.value > 0.02) {
             return d3.format('%')(d.value);
@@ -87,7 +92,7 @@ var bars = function() {
             return null;
           }})
         .attr('x', function(d) {
-          var cx = x(x_positions[d.party]) + 0.5*x(d.value);
+          var cx = x(x_positions[d.party]) + x(d.value); //0.5*x(d.value);
           return cx;
         });
 

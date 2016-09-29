@@ -2,19 +2,30 @@
 var page_w = +d3.select('#main').style('width').slice(0,-2);
 
 var voting_systems = [
-  {label: 'First Past the Post', abbr: 'FPTP'},
-  {label: 'Dual Member Proportional', abbr: 'DMP'},
-  {label: 'Mixed Member Proportional', abbr: 'MMP'},
-  {label: 'Instant Runoff Voting', abbr: 'IRV'}];
+  {label: 'First Past the Post (FPTP)', abbr: 'FPTP'},
+  {label: 'Dual Member Proportional (DMP)', abbr: 'DMP'},
+  {label: 'Mixed Member Proportional (MMP)', abbr: 'MMP'},
+  {label: 'Instant Runoff Voting (IRV)', abbr: 'IRV'}];
 
 var provs = ['BC', 'AB', 'SK', 'MB', 'ON', 'QC', 'NB', 'NS', 'PE', 'NL', 'YT', 'NT', 'NU'];
 var parties = ['Liberal', 'Conservative', 'NDP', 'Bloc', 'Green', 'Other'];
 
-var regions = [];
-regions.push({label: 'Canada', abbr: 'Canada'});
-provs.forEach(function(d) {
-  regions.push({label: d, abbr: d});
-});
+var regions = [
+  {label: 'Canada', 'abbr': 'Canada'},
+  {label: 'British Columbia', 'abbr': 'BC'},
+  {label: 'Alberta', 'abbr': 'AB'},
+  {label: 'Saskatchewan', 'abbr': 'SK'},
+  {label: 'Manitoba', 'abbr': 'MB'},
+  {label: 'Ontario', 'abbr': 'ON'},
+  {label: 'Quebec', 'abbr': 'QC'},
+  {label: 'New Brunswick', 'abbr': 'NB'},
+  {label: 'Nova Scotia', 'abbr': 'NS'},
+  {label: 'PEI', 'abbr': 'PE'},
+  {label: 'Newfoundland', 'abbr': 'NL'},
+  {label: 'Yukon Territory', 'abbr': 'YT'},
+  {label: 'Northwest Territories', 'abbr': 'NT'},
+  {label: 'Nunavut', 'abbr': 'NU'}
+];
 
 function create_dropdown(id, data_list) {
   var sel = d3.select(id)

@@ -1,6 +1,6 @@
 var blocks = function() {
 
-  var margin = {top: 50, right: 160, bottom: 25, left: 5},
+  var margin = {top: 50, right: 160, bottom: 0, left: 5},
       width = page_w - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom,
       block_dim = 15,
@@ -84,7 +84,7 @@ var blocks = function() {
           .attr('class', 'region-label')
           .attr('x', -0.5*block_padding)
           .attr('y', -1.5*block_padding)
-          .html(function(d, i) { return 'R-' + d; })
+          .html(function(d, i) { return 'R-' + (d+1); })
       }
 
       var region_x_translate = 0;
@@ -205,15 +205,16 @@ var blocks = function() {
 
         d3.select('.prov.' + prov)
           .style('display', 'block')
+          .transition(500)
           .attr("transform", "translate(" + prov_translate[prov][0] + "," + prov_translate[prov][1] + ")" );
 
-      }}
-    );
+      }
+    });
 
-      var bottom_pos = top_pos + n_rows*(block_dim+block_padding) + y_padding;
-      d3.select('#block-chart').attr("height", bottom_pos + margin.top + margin.bottom);
+    var bottom_pos = top_pos + n_rows*(block_dim+block_padding);
+    d3.select('#block-chart').transition(500).attr("height", bottom_pos + margin.top + margin.bottom);
 
-    }
+  }
 
   function type(d) {
     d['riding_number'] = +d['riding_number'];

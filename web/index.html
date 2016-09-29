@@ -34,28 +34,57 @@
     </div>
 
     <div class='section' id='section2'>
-      <h2>What if we'd used this system in 2015?</h2>
-      <p>If the share of MPs elected is close to the share of the vote each party recieves, then the voting system is proportional.</p>
-      <div class='dropdown-div'><select id='region-dropdown'></select></div>
+
+      <h2 class='FPTP'>What was the outcome in 2015?</h2>
+      <h2 class='DMP'>What if we'd used DMP in 2015?</h2>
+      <h2 class='MMP'>What if we'd used MMP in 2015?</h2>
+      <h2 class='IRV'>What if we'd used IRV in 2015?</h2>
+
+      <div class='dropdown-div'>
+        <select id='region-dropdown'></select>
+      </div>
+
       <div class='legend'></div>
-      <div id='chart2' class='chart'>
-        <h3 class='title'>Share of MPs</h3>
-        <svg id='bar-chart-1'></svg>
-      </div>
 
-      <div id='chart3' class='chart'>
-        <h3 class='title'>Share of Vote</h3>
-        <svg id='bar-chart-2'></svg>
-      </div>
 
+
+
+      <div id='bar-charts'>
+        <div id='chart2' class='chart'>
+          <div class='title'>Share of MPs</div>
+          <svg id='bar-chart-1'></svg>
+        </div>
+
+        <div id='chart3' class='chart'>
+          <div class='title'>Share of Vote</div>
+          <svg id='bar-chart-2'></svg>
+        </div>
+      </div>
     </div>
 
+    <div id='explanatory-text-2'>
+      <p class='FPTP'>The share of MPs electected is quite different from the share of the vote each party recieves. This voting system is not proportional.</p>
+      <p class='DMP'>The share of MPs electected is close to the share of the vote each party recieves, so this voting system is close to proportional.</p>
+      <p class='MMP'>The share of MPs electected is close to the share of the vote each party recieves, so this voting system is close to proportional.</p>
+      <p class='IRV'>The share of MPs electected is very different from the share of the vote each party recieves. This voting system is not proportional.</p>
+    </div>
+    
     <div class='section'>
+
       <h3>How would seats have been distributed in <span id='region-title'></span>?</h3>
+
+      <div id='explanatory-text'>
+        <p class='FPTP'>The current system in Canada. Each riding contains one MP.</p>
+        <p class='DMP'>Each riding becomes twice as big, and contains two local MPs.</p>
+        <p class='MMP'>Each grouping of seats within each province represents a region (R-1 through R-29). Each region has local MPs that each represent a single riding, as well as regional MPs who represent the entire region.</p>
+        <p class='IRV'>The same structure as the current system in Canada. Each riding contains one MP.</p>
+      </div>
+
       <div id='chart' class='chart'>
         <div class='legend'></div>
         <svg id='block-chart'></svg>
       </div>
+
     </div>
 
     <div class='section'>
