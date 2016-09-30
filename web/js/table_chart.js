@@ -45,6 +45,7 @@ var table = function() {
       .attr('height', swatch_h);
 
     rows.append('text')
+      .attr('class', 'mp-text')
       .attr('x', mp_x1)
       .html('MPs');
 
@@ -70,10 +71,20 @@ var table = function() {
           legend_entries.slice(0, -1).forEach(function(e) {
             seat_sum +=data[sel_region][sel_system][e.party]
           })
+          d.seat_sum = seat_sum;
           return seat_sum;
         }
+        d.seat_sum = data[sel_region][sel_system][d.party];
         return data[sel_region][sel_system][d.party];
       });
+
+    d3.selectAll('.mp-text')
+      .html(function(d) {
+      if (d.seat_sum == 1) {
+        return 'MP';
+      }
+      return 'MPs';
+    });
 
   }
 
