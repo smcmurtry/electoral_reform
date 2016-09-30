@@ -7,7 +7,7 @@ d3.queue()
   .defer(d3.csv, './data/mmp_clean.csv', blocks.type)
   .defer(d3.csv, './data/irv_clean.csv', blocks.type)
   .defer(d3.csv, './data/pct_summary.csv', bars.type)
-  .defer(d3.json, './data/tot_summary.json')//, table.type)
+  .defer(d3.json, './data/tot_summary.json')
   .awaitAll(
     function(error, files) {
       table.init(error, files[5]);
