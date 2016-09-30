@@ -1,10 +1,11 @@
 var bars = function() {
 
-  var margin = {top: 40, right: 0, bottom: 0, left: 0},
+  var margin = {top: 40, right: 35, bottom: 0, left: 0},
       width = page_w - margin.left - margin.right,
       height = 70 - margin.top - margin.bottom,
       bar_h = 30,
-      bar_padding = 8;
+      bar_padding = 8,
+      font_size = +d3.select('body').style('font-size').slice(0,-2);
 
   var x = d3.scale.linear()
     .domain([0, 1.])
@@ -45,6 +46,10 @@ var bars = function() {
     add_labels(g1, sel_rows, x_positions_sel);
     add_labels(g2, pop_rows, x_positions_pop);
 
+    add_lines(g1, sel_rows, x_positions_sel);
+    add_lines(g2, pop_rows, x_positions_pop);
+
+
     function add_bars(g, rows, x_positions) {
       var bars = g.selectAll('.bar')
         .data(rows, function(d) { return d.party; });
@@ -59,30 +64,63 @@ var bars = function() {
     }
 
     function add_labels(g, rows, x_positions) {
+      var padding_to_line = 5;
 
       var labels = g.selectAll('text').data(rows, function(d) { return d.party; });
       labels.enter().append('text');
       labels.exit().remove();
 
-      var text_height = +labels.style('font-size').slice(0,-2);
+      labels
+        .attr('y', function(d) {
+            // if (d.value < 0.035) {
+              // return -1.25*font_size;
+            // }
+            return -padding_to_line;//-font_size;
+        })
 
-      labels.attr('y', -0.25*text_height)
-        .attr('text-anchor', 'end')
         .html(function(d) {
-          if (d.value > 0.02) {
-            return d3.format('%')(d.value);
+          if (d.value > 0.005) {
+            // return d3.format('%')(d.value);
+            return d3.format('.1r')(100*d.value);
           } else {
             return null;
           }})
+        .attr('text-anchor', function(d) {
+          var label_width = +d3.select(this).style('width').slice(0, -2);
+          if (label_width > x(d.value)) {
+            return 'start';
+          }
+          return 'end';
+        })
         .attr('x', function(d) {
-          var cx = x(x_positions[d.party]) + x(d.value); //0.5*x(d.value);
-          return cx;
+          var label_width = +d3.select(this).style('width').slice(0, -2);
+          if (label_width > x(d.value)) {
+            return x(x_positions[d.party]) + x(d.value) + padding_to_line;
+          }
+          return x(x_positions[d.party]) + x(d.value) - padding_to_line;
         });
     }
+
     function add_lines(g, rows, x_positions) {
       // var lines = g.selectAll('.label-line')
       //   .data()
+      var lines = g.selectAll('.label-line')
+        .data(rows, function(d) { return d.party; });
 
+      lines.enter().append('line').attr('class', 'label-line');
+      lines.exit().remove();
+
+      lines.transition(500)
+        .attr('x1', function(d) { return x(x_positions[d.party] + d.value); })
+        .attr('x2', function(d) { return x(x_positions[d.party] + d.value); })
+        .attr('y1', 0)
+        .attr('y2', function(d) {
+          // if (d.value < 0.035) {
+            // return -2*font_size;
+          // }
+          return -1.2*font_size;
+        })
+        .style('display', function(d) { return (d.value < 0.005) ? 'none' : 'block'; } )
 
     }
   }
