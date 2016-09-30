@@ -6,6 +6,7 @@ var bars = function() {
       bar_h = 30,
       bar_padding = 8;
 
+
   var x = d3.scale.linear()
     .domain([0, 1.])
     .range([0, width]);
@@ -21,16 +22,7 @@ var bars = function() {
   }
 
   function init(error, data) {
-    var legend_entries = [
-      {label: 'Liberal', class: 'Liberal', type: 'mp'},
-      {label: 'Conservative', class: 'Conservative', type: 'mp'},
-      {label: 'NDP', class: 'NDP', type: 'mp'},
-      {label: 'Bloc Québécois', class: 'Bloc', type: 'mp'},
-      {label: 'Green', class: 'Green', type: 'mp'},
-      {label: 'Other', class: 'Other', type: 'mp'}
-    ];
 
-    draw_legend('#section2', legend_entries, width, 0.5*bar_h, 0.5*bar_padding);
   }
 
   function update(data, sel_system, sel_region) {
@@ -69,7 +61,6 @@ var bars = function() {
       .attr('x', function(d) { return x(x_positions_sel[d.party]); })
       .attr('width', function(d) { return x(d.value); })
       .attr('class', function(d) { return 'sel ' + d.party; });
-
 
     add_labels(g1, sel_rows, x_positions_sel);
     add_labels(g2, pop_rows, x_positions_pop);

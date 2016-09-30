@@ -40,6 +40,7 @@ body {
 .Bloc { fill: #00A7EC; }
 .Other { fill: grey; }
 .black { fill: black; }
+.Total { fill: none; }
 
 .chart {
   position: relative;
@@ -115,4 +116,9 @@ select:disabled {
 
 select:focus {
   outline: 1px solid #c9f3ef;
+}
+
+.thing {
+  stroke: black;
+  stroke-width: 3px;
 }
