@@ -2,6 +2,8 @@
 <head>
   <meta charset="utf-8">
   <title>Electoral Reform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <script src="./js/d3.v3.min.js"></script>
   <!-- <script src="./js/queue.js"></script> -->
   <!-- <script src="https://d3js.org/d3-queue.v3.min.js"></script> -->
@@ -27,20 +29,35 @@
       <select id='region-dropdown'></select>
     </div>
 
-    <div class='section'>
+    <div class='section' id='desc-section'>
       <h2>How does <span id='system-title' class='changeable'>it</span> work?</h2>
-      <p class='FPTP'>
-        A first-past-the-post voting system is one in which voters are required to indicate on the ballot the candidate of their choice, and the candidate who receives more votes than any other candidate wins. The first-past-the-post voting method is one of the several plurality voting systems. It is a common, but not universal, feature of voting systems with single member electoral divisions. The system is widely used in the United Kingdom and United States, most of their current and former colonies and protectorates, and a few other countries. From <a href='https://en.wikipedia.org/wiki/First-past-the-post_voting'>Wikipedia</a>.
-      </p>
-      <p class='DMP'>
-        Dual-member proportional representation (DMP) is a voting system designed to produce proportional election results across a region by electing two representatives in each of the region’s districts. The 1st seat in every district is awarded to the candidate who receives the most votes, similar to first-past-the-post voting (FPTP). The 2nd seat is awarded to one of the remaining district candidates so that proportionality is achieved across the region, using a calculation that aims to award parties their seats in the districts where they had their strongest performances. From <a href='https://en.wikipedia.org/wiki/Dual-member_proportional_representation'>Wikipedia</a>.
-      </p>
-      <p class='MMP'>
-        Mixed member proportional voting (MMP) is a voting system that combines some features of a proportional voting system and some of a first past the post (FPTP) system. It tends to create widely representative parliaments with many parties catering to the preferences of broad sections of the voters. It frequently results in minority governments and governing by consensus. It is currently used in the national parliaments of Germany, Italy, New Zealand and Venezuela. From <a href='http://rationalwiki.org/wiki/Mixed_member_proportional_voting'>RationalWiki</a>.
-      </p>
-      <p class='IRV'>
-        Instant-runoff voting (IRV), also known as the alternative vote (AV), transferable vote, (single-seat) ranked choice voting (RCV), or preferential voting, is a voting system used to elect a single candidate from a field of more than two candidates. It is a preferential voting system in which voters rank candidates in order of preference, rather than voting for a single candidate. Ballots are initially counted for each elector's first choice candidate. If a candidate secures more than half of the votes, that candidate wins. Otherwise, the candidate in last place loses, and votes for that candidate are added to the totals of the candidate ranked next on each ballot. This process repeats until one candidate wins by obtaining more than half the votes. In the final "instant runoff," the winner always has majority support of those voters who indicated a preference for one or more of the finalists. From <a href='https://en.wikipedia.org/wiki/Instant-runoff_voting'>Wikipedia</a>.
-      </p>
+
+      <div class='FPTP'>
+        <div>A first-past-the-post voting system is one in which voters are required to indicate on the ballot the candidate of their choice, and the candidate who receives more votes than any other candidate wins. The first-past-the-post voting method is one of the several plurality voting systems. It is a common, but not universal, feature of voting systems with single member electoral divisions. The system is widely used in the United Kingdom and United States, most of their current and former colonies and protectorates, and a few other countries.
+          <span class='source'>— <a href='https://en.wikipedia.org/wiki/First-past-the-post_voting'>Wikipedia</a></div>
+          </span>
+        </div>
+
+      <div class='DMP'>
+        <div>
+          Dual-member proportional representation (DMP) is a voting system designed to produce proportional election results across a region by electing two representatives in each of the region’s districts. The 1st seat in every district is awarded to the candidate who receives the most votes, similar to first-past-the-post voting (FPTP). The 2nd seat is awarded to one of the remaining district candidates so that proportionality is achieved across the region, using a calculation that aims to award parties their seats in the districts where they had their strongest performances.
+          <span class='source'>— <a href='https://en.wikipedia.org/wiki/Dual-member_proportional_representation'>Wikipedia</a></div>
+          </span>
+        </div>
+
+      <div class='MMP'>
+        <div>
+          Mixed member proportional voting (MMP) is a voting system that combines some features of a proportional voting system and some of a first past the post (FPTP) system. It tends to create widely representative parliaments with many parties catering to the preferences of broad sections of the voters. It frequently results in minority governments and governing by consensus. It is currently used in the national parliaments of Germany, Italy, New Zealand and Venezuela.
+          <span class='source'>— <a href='http://rationalwiki.org/wiki/Mixed_member_proportional_voting'>RationalWiki</a></div>
+          </span>
+        </div>
+
+      <div class='IRV'>
+        <div>
+        Instant-runoff voting (IRV), also known as the alternative vote (AV), transferable vote, (single-seat) ranked choice voting (RCV), or preferential voting, is a voting system used to elect a single candidate from a field of more than two candidates. It is a preferential voting system in which voters rank candidates in order of preference, rather than voting for a single candidate. Ballots are initially counted for each elector's first choice candidate. If a candidate secures more than half of the votes, that candidate wins. Otherwise, the candidate in last place loses, and votes for that candidate are added to the totals of the candidate ranked next on each ballot. This process repeats until one candidate wins by obtaining more than half the votes. In the final "instant runoff," the winner always has majority support of those voters who indicated a preference for one or more of the finalists.
+        <span class='source'>— <a href='https://en.wikipedia.org/wiki/Instant-runoff_voting'>Wikipedia</a></div>
+        </span>
+      </div>
 
     </div>
 
@@ -52,9 +69,24 @@
       <h2 class='IRV'>What if we'd used <span class='changeable'>Instant Runoff Voting</span> in 2015?</h2>
 
 
+      <p class='FPTP'>The results below are the actual elections results from 2015.</p>
+      <p class='DMP'>The results below are from simulations done using elections canada voting results.</p>
+      <p class='MMP'>The results below are from simulations done using elections canada voting results.</p>
+      <p class='IRV'>The results below are from simulations done using elections canada voting results and exit polling to ask about second choices.</p>
+
       <div class='chart'>
         <svg id='table-chart'></svg>
       </div>
+
+      <div id='explanatory-text-2'>
+        <p>If the share of MPs electected is close to the share of the vote each party recieves, the voting system is proportional.</p>
+        <!-- <p class='FPTP'>The share of MPs electected is quite different from the share of the vote each party recieves. This voting system is not proportional.</p>
+        <p class='DMP'>The share of MPs electected is close to the share of the vote each party recieves, so this voting system is close to proportional.</p>
+        <p class='MMP'>The share of MPs electected is close to the share of the vote each party recieves, so this voting system is close to proportional.</p>
+        <p class='IRV'>The share of MPs electected is very different from the share of the vote each party recieves. This voting system is not proportional.</p> -->
+      </div>
+
+
 
       <div id='bar-charts'>
         <div id='chart2' class='chart'>
@@ -69,22 +101,15 @@
       </div>
     </div>
 
-    <div id='explanatory-text-2'>
-      <p class='FPTP'>The share of MPs electected is quite different from the share of the vote each party recieves. This voting system is not proportional.</p>
-      <p class='DMP'>The share of MPs electected is close to the share of the vote each party recieves, so this voting system is close to proportional.</p>
-      <p class='MMP'>The share of MPs electected is close to the share of the vote each party recieves, so this voting system is close to proportional.</p>
-      <p class='IRV'>The share of MPs electected is very different from the share of the vote each party recieves. This voting system is not proportional.</p>
-    </div>
-
     <div class='section'>
 
       <h2>How would seats have been distributed in <span id='region-title' class='changeable'></span>?</h2>
 
       <div id='explanatory-text'>
-        <p class='FPTP'>The current system in Canada. Each riding contains one MP.</p>
-        <p class='DMP'>Each riding becomes twice as big, and contains two local MPs.</p>
-        <p class='MMP'>Each grouping of seats within each province represents a region (R-1 through R-29). Each region has local MPs that each represent a single riding, as well as regional MPs who represent the entire region.</p>
-        <p class='IRV'>The same structure as the current system in Canada. Each riding contains one MP.</p>
+        <p class='FPTP'>The following chart shows how seats were distributed in 2015. In the current system, each riding contains one MP.</p>
+        <p class='DMP'>The following chart shows how seats would have been distributed in 2015 if the voting system had been DMP. Each riding would have been twice as big, and would contain two local MPs.</p>
+        <p class='MMP'>The following chart shows how seats would have been distributed in 2015 if the voting system had been MMP. Each grouping of seats within each province represents a region (R-1 through R-29). Each region would have local MPs that each represent a single riding, as well as regional MPs who would represent the entire region.</p>
+        <p class='IRV'>The following chart shows how seats would have been distributed in 2015 if the voting system had been IRV. Ridings boundaries would have remained the same, with one MP per riding.</p>
       </div>
 
       <div id='chart' class='chart'>

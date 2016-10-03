@@ -20,11 +20,11 @@ var table = function() {
   function init(error, data) {
 
     var row_h = 35,
-        number_x2 = 32, // so the left of the 3 digit # is left aligned
-        mp_x1 = number_x2 + 12,
-        swatch_x1 = mp_x1 + 60,
+        swatch_x1 = 0,//mp_x1 + 60,
         label_x1 = swatch_x1 + 30,
-        swatch_h = 0.5*row_h;
+        swatch_h = 0.5*row_h,
+        number_x2 = label_x1 + 200, // so the left of the 3 digit # is left aligned
+        mp_x1 = number_x2 + 12;
 
     var rows = g.selectAll('.rows')
       .data(legend_entries)
@@ -56,7 +56,7 @@ var table = function() {
 
     g.append('line')
       .attr('x1', 0)
-      .attr('x2', label_x1 + 140)
+      .attr('x2', mp_x1 + 40)
       .attr('y1', ((legend_entries.length-0.7)*row_h))
       .attr('y2', ((legend_entries.length-0.7)*row_h))
       .attr('class', 'thing');

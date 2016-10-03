@@ -10,11 +10,17 @@ d3.queue()
   .defer(d3.json, './data/tot_summary.json')
   .awaitAll(
     function(error, files) {
-      table.init(error, files[5]);
-      bars.init(error, files[4]);
-      var dataz = blocks.init(error, files[0], files[1], files[2], files[3]);
-
+      function init_all() {
+        page_w = +d3.select('#main').style('width').slice(0,-2);
+        table.init(error, files[5]);
+        bars.init(error, files[4]);
+        var dataz = blocks.init(error, files[0], files[1], files[2], files[3]);
+        return dataz;
+      }
+      var dataz = init_all();
       d3.selectAll('select').on('change', update_all);
+      // window.addEventListener('resize', init_all, false);
+
       update_all();
 
       function update_all() {
