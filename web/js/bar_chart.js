@@ -81,7 +81,7 @@ var bars = function() {
         .html(function(d) {
           if (d.value > 0.005) {
             // return d3.format('%')(d.value);
-            return d3.format('.1r')(100*d.value);
+            return d3.format('.0f')(100*d.value);
           } else {
             return null;
           }})

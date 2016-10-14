@@ -169,7 +169,9 @@ var blocks = function() {
     mps.attr('width', block_dim)
       .attr('height', block_dim)
       .attr('x', function(_, i) { return (Math.floor(i*1./n_rows))*(block_dim+block_padding); } )
-      .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding)});
+      .attr('y', function(_, i) {
+        
+        return (i%n_rows)*(block_dim+block_padding)});
   }
 
   function set_provs_translate(provs, dataz, prov_width, sel_system, sel_region) {
