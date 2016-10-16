@@ -24,6 +24,7 @@ d3.queue()
       update_all();
 
       function update_all() {
+
         var sel_system = get_selected_row('#voting-system-dropdown', voting_systems);
         var sel_region = get_selected_row('#region-dropdown', regions);
         var sel_system_label = voting_systems.filter(function(d) { return d.abbr == sel_system; })[0].label;

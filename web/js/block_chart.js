@@ -3,12 +3,15 @@ var blocks = function() {
   var margin = {top: 50, right: 160, bottom: 0, left: 5},
       width = page_w - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom,
-      block_dim = 15,
-      block_padding = 8,
-      n_rows = 6,
+      block_dim = (page_w < 750) ? 13 : 15,//15,
+      block_padding = 8.*block_dim/15.,//8,
+      n_rows = (page_w < 750) ? 15 : 6,//6,
       prov_x_padding = 20,
       prov_y_padding = 50,
       region_label_y_padding = 30;
+
+  d3.selectAll('.title').style('margin-bottom', (page_w < 750) ? '2rem' : '0px');
+  // d3.selectAll('.title').style('margin-bottom', (page_w < 750) ? '2rem' : '0px');
 
   var g = create_g('#block-chart', width, height, margin);
 
@@ -85,20 +88,16 @@ var blocks = function() {
           .attr('x', -0.5*block_padding)
           .attr('y', -1.5*block_padding)
           .html(function(d, i) { return 'R-' + (d+1); })
+          .attr('font-size', (page_w < 750) ? 13 : 16);
       }
 
       var region_x_translate = 0;
       regions.forEach(function(region_number, i) {
 
         var region_rows = prov_rows.filter(function(d) { return d.region_number == region_number; });
-        // if (sel_system == 'MMP') {
-        // console.log(region_rows)
-      // };
         var ridings = Array.from(new Set(region_rows.map(function(d) { return d.riding_number; })));
         if (sel_system == 'MMP') {
-          // console.log(ridings)
-          ridings = ridings.filter(function(d) { return d != -1; });
-          // console.log(ridings)
+          ridings = ridings.filter(function(d) { return d != -1; }); // -1 is assigned to regional mps
         };
 
         var seats_in_region = region_rows.length;

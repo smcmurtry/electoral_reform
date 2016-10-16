@@ -9,6 +9,7 @@ body {
   margin: 0 auto;
   width: 95%;
   max-width: 900px;
+  /*min-width: 770px;*/
 }
 
 #nav {
@@ -76,7 +77,7 @@ body {
 }
 
 .title {
-  margin-bottom: 0px;
+  /*margin-bottom: 0px;*/
   /*font-size: 16px;*/
   /*font-weight: bold;*/
 }
@@ -153,3 +154,7 @@ select:focus {
   /*text-align: right;*/
   font-style: italic;
 }
+
+/*.region-label {*/
+  /*font-size: 0.8rem;*/
+/*}*/
