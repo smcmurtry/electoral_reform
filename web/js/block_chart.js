@@ -91,9 +91,14 @@ var blocks = function() {
       regions.forEach(function(region_number, i) {
 
         var region_rows = prov_rows.filter(function(d) { return d.region_number == region_number; });
+        // if (sel_system == 'MMP') {
+        // console.log(region_rows)
+      // };
         var ridings = Array.from(new Set(region_rows.map(function(d) { return d.riding_number; })));
         if (sel_system == 'MMP') {
+          // console.log(ridings)
           ridings = ridings.filter(function(d) { return d != 0; });
+          // console.log(ridings)
         };
 
         var seats_in_region = region_rows.length;
@@ -170,7 +175,7 @@ var blocks = function() {
       .attr('height', block_dim)
       .attr('x', function(_, i) { return (Math.floor(i*1./n_rows))*(block_dim+block_padding); } )
       .attr('y', function(_, i) {
-        
+
         return (i%n_rows)*(block_dim+block_padding)});
   }
 
