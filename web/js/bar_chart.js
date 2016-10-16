@@ -64,20 +64,14 @@ var bars = function() {
     }
 
     function add_labels(g, rows, x_positions) {
-      var padding_to_line = (page_w < 500) ? 1 : 5;
+      var padding_to_line = (page_w < 500) ? 1 : 3;
 
       var labels = g.selectAll('text').data(rows, function(d) { return d.party; });
       labels.enter().append('text');
       labels.exit().remove();
 
       labels
-        .attr('y', function(d) {
-            // if (d.value < 0.035) {
-              // return -1.25*font_size;
-            // }
-            return -padding_to_line;//-font_size;
-        })
-
+        .attr('y',  -padding_to_line)
         .html(function(d) {
           if (d.value > 0.005) {
             // return d3.format('%')(d.value);
@@ -85,7 +79,7 @@ var bars = function() {
           } else {
             return null;
           }})
-          .attr('font-size', (page_w < 500) ? 12 : 14)
+          .attr('font-size', (page_w < 500) ? 12 : 18)
         .attr('text-anchor', function(d) {
           var label_width = +d3.select(this).style('width').slice(0, -2);
           if (label_width > x(d.value)) {
@@ -95,7 +89,7 @@ var bars = function() {
         })
         .attr('x', function(d) {
           var label_width = +d3.select(this).style('width').slice(0, -2);
-          if (label_width > x(d.value)) {
+          if (label_width + padding_to_line > x(d.value)) {
             return x(x_positions[d.party]) + x(d.value) + padding_to_line;
           }
           return x(x_positions[d.party]) + x(d.value) - padding_to_line;
