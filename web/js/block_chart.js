@@ -97,7 +97,7 @@ var blocks = function() {
         var ridings = Array.from(new Set(region_rows.map(function(d) { return d.riding_number; })));
         if (sel_system == 'MMP') {
           // console.log(ridings)
-          ridings = ridings.filter(function(d) { return d != 0; });
+          ridings = ridings.filter(function(d) { return d != -1; });
           // console.log(ridings)
         };
 
