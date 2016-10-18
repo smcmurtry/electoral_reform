@@ -47,7 +47,7 @@ body {
 .region-border {
   stroke: black;
   stroke-width: 2;
-  /*stroke-dasharray: 4,2;*/
+  stroke-dasharray: 4,2;
   fill: none;
 }
 

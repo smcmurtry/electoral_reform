@@ -11,8 +11,8 @@ var blocks = function() {
       region_label_y_padding = 30,
       region_x_padding = {'STV': 0., 'MMP': 2.*block_padding, 'FPTP': 0., 'DMP': 0., 'IRV': 0.},
       border_padding = 0.25*block_padding,
-      riding_padding = 8,
-      riding_border_padding = 2,
+      riding_padding = 12,
+      riding_border_padding = 3,
       column_height = (block_dim + block_padding)*n_rows,
       mp_padding = 2,
       mp_dim = 15;
@@ -70,8 +70,11 @@ var blocks = function() {
     });
 
     // var prov_width = {};
-    var province_x = 0,
-        province_y = 0;
+    var riding_bbox;
+        // province_x = 0,
+        // province_y = 0,
+        // prov_row_height = {0: 0},
+        // prov_row = 0;
 
     g.selectAll('.prov-label').attr('y', (sel_system == 'MMP') ? -4*block_padding : -2*block_padding);
 
@@ -108,7 +111,6 @@ var blocks = function() {
         var unique_riding_numbers = Array.from(new Set(region_rows.map(function(d) { return d.riding_number; })));
         unique_riding_numbers = unique_riding_numbers.filter(function(d) { return d != -1; }); // -1 is assigned to regional mps
 
-        // var riding_mps = region_rows.filter(function(d) { return d != -1; });
         var non_riding_mps = region_rows.filter(function(d) { return d == -1; });
 
         var riding_x = 0,
@@ -128,37 +130,25 @@ var blocks = function() {
 
           });
 
-          var riding_bbox = riding.node().getBBox();
+          if (riding_y + riding.node().getBBox().height > column_height) {
+            riding_y = 0;
+            riding_x += riding_bbox.width + riding_padding;
+          }
+
+          riding_bbox = riding.node().getBBox();
 
           riding.append('rect')
             .attr('class', 'riding-border')
             .attr('width', riding_bbox.width + 2.*riding_border_padding)
             .attr('height', riding_bbox.height + 2.*riding_border_padding)
             .attr('x', -riding_border_padding)
-            .attr('y', -riding_border_padding)
+            .attr('y', -riding_border_padding);
 
-          if (riding_y + riding_bbox.height > column_height) {
-            riding_y = 0;
-            riding_x += riding_bbox.width + riding_padding;
-          }
           riding.attr("transform", "translate(" + riding_x + "," + riding_y + ")" );
 
           riding_y += riding_bbox.height + riding_padding;
 
         })
-
-        // var seats_in_region = region_rows.length;
-        // var region_n_cols = Math.ceil(seats_in_region/n_rows);
-        // var region_w = region_n_cols*(block_dim+block_padding) + region_x_padding[sel_system];
-        // var region_h;
-        // if (region_rows.length >= n_rows) {
-        //   region_h = n_rows*(block_dim+block_padding) + 1.*block_padding;
-        // } else {
-        //   region_h = region_rows.length*(block_dim+block_padding) + 1.*block_padding;
-        // }
-
-
-        // region_x_translate += region_w;
 
         // var local_seat_rows = region_rows.filter(function(d) { return d.seat_type == 'local'; });
         // var regional_seat_rows = region_rows.filter(function(d) { return d.seat_type == 'regional'; });
@@ -172,87 +162,90 @@ var blocks = function() {
         //
         // var sorted_seat_rows = local_seat_rows.concat(regional_seat_rows);
 
-        // update_riding_borders(rg, ridings, sel_system);
-
-        // update_mps(rg, sorted_seat_rows);
 
         var region_bbox = region.node().getBBox();
 
         region_x += region_bbox.width;
 
 
-        // rg.append('rect')
-        //   .attr('class', 'region_border')
-        //   .attr('x', region_bbox.x - border_padding)
-        //   .attr('y', region_bbox.y - border_padding)
-        //   .attr('height', region_bbox.height + 2.*border_padding)
-        //   .attr('width', region_bbox.width + 2.*border_padding)
+        region.append('rect')
+          .attr('class', 'region-border')
+          .attr('x', region_bbox.x - border_padding)
+          .attr('y', region_bbox.y - border_padding)
+          .attr('height', region_bbox.height + 2.*border_padding)
+          .attr('width', region_bbox.width + 2.*border_padding)
 
 
       });
 
-      var province = d3.select('g.prov.' + prov)
-
-      var province_bbox = province.node().getBBox();
-
-      if (province_x + province_bbox.width > width) {
-        province_x = 0;
-        province_y += province_bbox.height + prov_y_padding;
-
-      }
-      province.attr("transform", "translate(" + province_x + "," + province_y + ")" );
-
-      province_x += province_bbox.width + prov_x_padding;
-
-      // prov_width[prov] = region_right;
-
+      // var province = d3.select('g.prov.' + prov)
+      //
+      // var province_bbox = province.node().getBBox();
+      // prov_row_height[prov_row] = Math.max(prov_row_height[prov_row], province_bbox.height);
+      //
+      // if (province_x + province_bbox.width > width) {
+      //   province_x = 0;
+      //   province_y += prov_row_height[prov_row] + prov_y_padding;
+      //   prov_row += 1;
+      //   prov_row_height[prov_row] = 0;
+      // }
+      // province.attr("transform", "translate(" + province_x + "," + province_y + ")" );
+      //
+      // province_x += province_bbox.width + prov_x_padding;
 
     })
+    set_provs_translate(provs, sel_system, sel_region);
+
+
     // set_provs_translate(provs, dataz, prov_width, sel_system, sel_region);
 
   }
 
-  // function update_riding_borders(g, data, sel_system) {
-  //   var riding_borders = g.selectAll('.riding-border').data(data);
-  //
-  //   riding_borders.exit().remove();
-  //
-  //   riding_borders.enter()
-  //     .append('rect')
-  //     .attr('class', function(d) { return 'riding-border ' + d; });
-  //
-  //   riding_borders.attr('width', block_dim + 2.*border_padding);
-  //
-  //   if (sel_system == 'DMP') {
-  //     riding_borders.attr('height', 2*block_dim + 1.5*block_padding)
-  //       .attr('x', function(_, i) { return (Math.floor(i*2./n_rows))*(block_dim+block_padding) - border_padding; } )
-  //       .attr('y', function(_, i) { return ((2*i)%n_rows)*(block_dim+block_padding) - border_padding; });
-  //   } else {
-  //     riding_borders.attr('height', block_dim + 2.*border_padding)
-  //       .attr('x', function(_, i) { return (Math.floor(i/n_rows))*(block_dim+block_padding) - border_padding; } )
-  //       .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding) - border_padding; });
-  //   }
-  //
-  //   if (sel_system == 'STV') { g.selectAll('.riding-border').remove(); }
-  // }
-  //
-  // function update_mps(g, data) {
-  //
-  //   var mps = g.selectAll('.mp').data(data);
-  //
-  //   mps.exit().remove();
-  //
-  //   mps.enter()
-  //     .append('rect')
-  //     .attr('class', function(d) { return 'mp ' + d.party; });
-  //
-  //   mps.attr('width', block_dim)
-  //     .attr('height', block_dim)
-  //     .attr('x', function(_, i) { return (Math.floor(i*1./n_rows))*(block_dim+block_padding); } )
-  //     .attr('y', function(_, i) {
-  //
-  //   return (i%n_rows)*(block_dim+block_padding)});
-  // }
+  function set_provs_translate(provs, sel_system, sel_region) {
+    var province_x = 0,
+    province_y = 0,
+    prov_row_height = {0: 0},
+    prov_row = 0;
+
+    var provs_to_show;
+    if (sel_region == 'Canada') {
+      provs_to_show = provs;
+    } else {
+      provs_to_show = [sel_region];
+    }
+
+    provs.forEach(function(prov) {
+
+      if (provs_to_show.indexOf(prov) < 0) {
+        d3.select('.prov.' + prov)
+          .style('display', 'none');
+      } else {
+        var province = d3.select('g.prov.' + prov)
+
+        var province_bbox = province.node().getBBox();
+        prov_row_height[prov_row] = Math.max(prov_row_height[prov_row], province_bbox.height);
+
+        if (province_x + province_bbox.width > width) {
+          province_x = 0;
+          province_y += prov_row_height[prov_row] + prov_y_padding;
+          prov_row += 1;
+          prov_row_height[prov_row] = 0;
+        }
+
+
+        province.style('display', 'block')
+          .transition(500)
+          .attr("transform", "translate(" + province_x + "," + province_y + ")" );
+
+        province_x += province_bbox.width + prov_x_padding;
+        }
+    })
+
+    d3.select('#block-chart')
+      .transition(500)
+      .attr("height", (province_y + prov_row_height[prov_row] + prov_y_padding) + margin.top + margin.bottom);
+
+    }
 
   // function set_provs_translate(provs, dataz, prov_width, sel_system, sel_region) {
   //   var y_padding = (sel_system == 'MMP') ? prov_y_padding + region_label_y_padding : prov_y_padding,
