@@ -9,7 +9,7 @@ var blocks = function() {
       prov_x_padding = 20,
       prov_y_padding = 50,
       region_label_y_padding = 30,
-      region_x_padding = {'STV': 0., 'MMP': 2.*block_padding, 'FPTP': 0., 'DMP': 0., 'IRV': 0.},
+      region_x_padding = 2.*block_padding,//{'STV': 0., 'MMP': 2.*block_padding, 'FPTP': 0., 'DMP': 0., 'IRV': 0.},
       border_padding = 0.25*block_padding,
       riding_padding = 12,
       riding_border_padding = 3,
@@ -69,12 +69,7 @@ var blocks = function() {
       d3.selectAll('.' + d.abbr).style('display', 'none');
     });
 
-    // var prov_width = {};
     var riding_bbox;
-        // province_x = 0,
-        // province_y = 0,
-        // prov_row_height = {0: 0},
-        // prov_row = 0;
 
     g.selectAll('.prov-label').attr('y', (sel_system == 'MMP') ? -4*block_padding : -2*block_padding);
 
@@ -110,15 +105,26 @@ var blocks = function() {
         var region_rows = prov_rows.filter(function(d) { return d.region_number == region_number; });
         var unique_riding_numbers = Array.from(new Set(region_rows.map(function(d) { return d.riding_number; })));
         unique_riding_numbers = unique_riding_numbers.filter(function(d) { return d != -1; }); // -1 is assigned to regional mps
+        var riding_array = [];
 
-        var non_riding_mps = region_rows.filter(function(d) { return d == -1; });
+        unique_riding_numbers.forEach(function(riding_number) {
+          var riding_rows = region_rows.filter(function(d) { return d.riding_number == riding_number; });
+          var obj = {};
+          obj['riding_number'] = riding_number;
+          obj['n_ridings'] = riding_rows.length;
+          obj['first_party'] = riding_rows[0].party;
+          riding_array.push(obj);
+        });
+        riding_array = riding_array.sort(function (a, b) { return parties.indexOf(a.first_party) - parties.indexOf(b.first_party); });;
+        riding_array.push({'riding_number': -1});
 
         var riding_x = 0,
             riding_y = 0;
-        unique_riding_numbers.forEach(function(riding_number) {
+        riding_array.forEach(function(riding_obj) {
 
-          var riding = region.append('g').attr('class', 'riding');
-          var riding_mps = region_rows.filter(function(d) { return d.riding_number == riding_number; });
+          var riding = region.append('g').attr('class', (riding_obj.riding_number == -1) ? 'non riding' : 'riding');
+          var riding_mps = region_rows.filter(function(d) { return d.riding_number == riding_obj.riding_number; });
+          riding_mps = riding_mps.sort(function (a, b) { return parties.indexOf(a.party) - parties.indexOf(b.party); });
 
           riding_mps.forEach(function(mp, i) {
             riding.append('rect')
@@ -150,23 +156,31 @@ var blocks = function() {
 
         })
 
+        region.selectAll('.non.riding .riding-border').style('stroke-width', '0');
+        var non_riding_mps = region_rows.filter(function(d) { return d.riding_number == -1; });
+        // console.log(region_rows)
+
+        // non_riding_mps.forEach(function(mp, i) {
+        //   region.append('rect')
+        //     .attr('class', mp.party + ' mp')
+        //     .attr('width', block_dim)
+        //     .attr('height', block_dim)
+        //     .attr('x', Math.floor(i/n_rows)*(mp_dim+mp_padding))
+        //     .attr('y', (i%n_rows)*(mp_dim+mp_padding))
+        // })
+
+
         // var local_seat_rows = region_rows.filter(function(d) { return d.seat_type == 'local'; });
         // var regional_seat_rows = region_rows.filter(function(d) { return d.seat_type == 'regional'; });
         //
-        // if (sel_system == 'DMP') {
-        //   local_seat_rows = local_seat_rows.sort(function(a, b) { return a.riding_number - b.riding_number; });
-        // } else {
-        //   local_seat_rows = local_seat_rows.sort(function (a, b) { return parties.indexOf(a.party) - parties.indexOf(b.party); })
-        //   regional_seat_rows = regional_seat_rows.sort(function (a, b) { return parties.indexOf(a.party) - parties.indexOf(b.party); })
-        // }
+
         //
         // var sorted_seat_rows = local_seat_rows.concat(regional_seat_rows);
 
 
         var region_bbox = region.node().getBBox();
 
-        region_x += region_bbox.width;
-
+        region_x += region_bbox.width + region_x_padding;
 
         region.append('rect')
           .attr('class', 'region-border')
@@ -196,23 +210,14 @@ var blocks = function() {
     })
     set_provs_translate(provs, sel_system, sel_region);
 
-
-    // set_provs_translate(provs, dataz, prov_width, sel_system, sel_region);
-
   }
 
   function set_provs_translate(provs, sel_system, sel_region) {
     var province_x = 0,
-    province_y = 0,
-    prov_row_height = {0: 0},
-    prov_row = 0;
-
-    var provs_to_show;
-    if (sel_region == 'Canada') {
-      provs_to_show = provs;
-    } else {
-      provs_to_show = [sel_region];
-    }
+        province_y = 0,
+        prov_row_height = {0: 0},
+        prov_row = 0,
+        provs_to_show = (sel_region == 'Canada') ? provs : [sel_region];
 
     provs.forEach(function(prov) {
 
@@ -232,7 +237,6 @@ var blocks = function() {
           prov_row_height[prov_row] = 0;
         }
 
-
         province.style('display', 'block')
           .transition(500)
           .attr("transform", "translate(" + province_x + "," + province_y + ")" );
@@ -244,52 +248,8 @@ var blocks = function() {
     d3.select('#block-chart')
       .transition(500)
       .attr("height", (province_y + prov_row_height[prov_row] + prov_y_padding) + margin.top + margin.bottom);
+  }
 
-    }
-
-  // function set_provs_translate(provs, dataz, prov_width, sel_system, sel_region) {
-  //   var y_padding = (sel_system == 'MMP') ? prov_y_padding + region_label_y_padding : prov_y_padding,
-  //       prov_translate = {},
-  //       left_pos = 0,
-  //       top_pos = 0,
-  //       provs_to_show;
-  //
-  //   if (sel_region == 'Canada') {
-  //     provs_to_show = provs;
-  //   } else {
-  //     provs_to_show = [sel_region];
-  //   }
-  //
-  //   provs.forEach(function(prov) {
-  //
-  //     if (provs_to_show.indexOf(prov) < 0) {
-  //       d3.select('.prov.' + prov)
-  //         .style('display', 'none');
-  //     } else {
-  //       var right_pos = left_pos + prov_width[prov];
-  //
-  //       if (right_pos > page_w) {
-  //         left_pos = 0;
-  //         top_pos += n_rows*(block_dim+block_padding) + y_padding;
-  //         prov_translate[prov] = [left_pos, top_pos];
-  //       } else {
-  //         prov_translate[prov] = [left_pos, top_pos];
-  //       }
-  //
-  //       left_pos += prov_width[prov] + prov_x_padding;
-  //
-  //       d3.select('.prov.' + prov)
-  //         .style('display', 'block')
-  //         .transition(500)
-  //         .attr("transform", "translate(" + prov_translate[prov][0] + "," + prov_translate[prov][1] + ")" );
-  //
-  //     }
-  //   });
-  //
-  //   var bottom_pos = top_pos + n_rows*(block_dim+block_padding);
-  //   d3.select('#block-chart').transition(500).attr("height", bottom_pos + margin.top + margin.bottom);
-  //
-  // }
 
   function type(d) {
     d['riding_number'] = +d['riding_number'];
