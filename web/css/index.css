@@ -44,10 +44,9 @@ body {
   fill: none;
   /*fill: black;*/
 }
-
-.region .region_border {
-  stroke: grey;
-  stroke-width: 0;
+.region_border {
+  stroke: black;
+  stroke-width: 2;
   /*stroke-dasharray: 4,2;*/
   fill: none;
 }

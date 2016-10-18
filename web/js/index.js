@@ -2,19 +2,20 @@ create_dropdown('#voting-system-dropdown', voting_systems);
 create_dropdown('#region-dropdown', regions);
 
 d3.queue()
+  .defer(d3.json, './data/tot_summary.json')
+  .defer(d3.csv, './data/pct_summary.csv', bars.type)
   .defer(d3.csv, './data/fptp_clean.csv', blocks.type)
   .defer(d3.csv, './data/dmp_clean.csv', blocks.type)
   .defer(d3.csv, './data/mmp_clean.csv', blocks.type)
   .defer(d3.csv, './data/irv_clean.csv', blocks.type)
-  .defer(d3.csv, './data/pct_summary.csv', bars.type)
-  .defer(d3.json, './data/tot_summary.json')
+  .defer(d3.csv, './data/stv_clean.csv', blocks.type)
   .awaitAll(
     function(error, files) {
       function init_all() {
         page_w = +d3.select('#main').style('width').slice(0,-2);
-        table.init(error, files[5]);
-        bars.init(error, files[4]);
-        var dataz = blocks.init(error, files[0], files[1], files[2], files[3]);
+        table.init(error, files[0]);
+        bars.init(error, files[1]);
+        var dataz = blocks.init(error, files[2], files[3], files[4], files[5], files[6]);
         return dataz;
       }
       var dataz = init_all();
@@ -33,8 +34,8 @@ d3.queue()
         d3.select('#system-title').html(sel_system_label);
         d3.select('#region-title').html(sel_region_label);
 
-        table.update(files[5], sel_system, sel_region);
-        bars.update(files[4], sel_system, sel_region);
+        table.update(files[0], sel_system, sel_region);
+        bars.update(files[1], sel_system, sel_region);
         blocks.update(dataz, sel_system, sel_region);
       }
 

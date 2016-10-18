@@ -8,26 +8,30 @@ var blocks = function() {
       n_rows = (page_w < 750) ? 15 : 6,//6,
       prov_x_padding = 20,
       prov_y_padding = 50,
-      region_label_y_padding = 30;
+      region_label_y_padding = 30,
+      region_x_padding = {'STV': 0., 'MMP': 2.*block_padding, 'FPTP': 0., 'DMP': 0., 'IRV': 0.},
+      border_padding = 0.25*block_padding;
 
   d3.selectAll('.title').style('margin-bottom', (page_w < 750) ? '2rem' : '0px');
   // d3.selectAll('.title').style('margin-bottom', (page_w < 750) ? '2rem' : '0px');
 
   var g = create_g('#block-chart', width, height, margin);
 
-  function init(error, fptp, dmp, mmp, irv) {
+  function init(error, fptp, dmp, mmp, irv, stv) {
 
     var dataz = {};
     dataz['FPTP'] = {};
     dataz['DMP'] = {};
     dataz['MMP'] = {};
     dataz['IRV'] = {};
+    dataz['STV'] = {};
 
     provs.forEach(function(d) {
       dataz['FPTP'][d] = fptp.filter(function(e) { return e.prov_abbr == d; });
       dataz['DMP'][d] = dmp.filter(function(e) { return e.prov_abbr == d; });
       dataz['MMP'][d] = mmp.filter(function(e) { return e.prov_abbr == d; });
       dataz['IRV'][d] = irv.filter(function(e) { return e.prov_abbr == d; });
+      dataz['STV'][d] = stv.filter(function(e) { return e.prov_abbr == d; });
     });
 
     var prov_g = g.selectAll('g.prov')
@@ -102,7 +106,7 @@ var blocks = function() {
 
         var seats_in_region = region_rows.length;
         var region_n_cols = Math.ceil(seats_in_region/n_rows);
-        var region_w = region_n_cols*(block_dim+block_padding) + 2.*block_padding;//1.*block_padding;
+        var region_w = region_n_cols*(block_dim+block_padding) + region_x_padding[sel_system];
         var region_h;
         if (region_rows.length >= n_rows) {
           region_h = n_rows*(block_dim+block_padding) + 1.*block_padding;
@@ -112,7 +116,6 @@ var blocks = function() {
 
         var rg = d3.select('g.region.r' + region_number)
           .attr("transform", "translate(" + region_x_translate + "," + 0 + ")" );
-
         region_x_translate += region_w;
 
         var local_seat_rows = region_rows.filter(function(d) { return d.seat_type == 'local'; });
@@ -129,6 +132,18 @@ var blocks = function() {
 
         update_riding_borders(rg, ridings, sel_system);
         update_mps(rg, sorted_seat_rows);
+
+        // rg.selectAll('.riding_border').style('stroke-width', (sel_system == 'STV') ? '0' : '2');
+
+        var bbox = rg.node().getBBox();
+
+        rg.append('rect')
+          .attr('class', 'region_border')
+          .attr('x', bbox.x - border_padding)
+          .attr('y', bbox.y - border_padding)
+          .attr('height', bbox.height + 2.*border_padding)
+          .attr('width', bbox.width + 2.*border_padding)
+
 
       });
       prov_width[prov] = region_x_translate;
@@ -147,17 +162,19 @@ var blocks = function() {
       .append('rect')
       .attr('class', function(d) { return 'riding_border ' + d; });
 
-    riding_borders.attr('width', block_dim + 0.5*block_padding);
+    riding_borders.attr('width', block_dim + 2.*border_padding);
 
     if (sel_system == 'DMP') {
       riding_borders.attr('height', 2*block_dim + 1.5*block_padding)
-        .attr('x', function(_, i) { return (Math.floor(i*2./n_rows))*(block_dim+block_padding) - 0.25*block_padding; } )
-        .attr('y', function(_, i) { return ((2*i)%n_rows)*(block_dim+block_padding) - 0.25*block_padding; });
+        .attr('x', function(_, i) { return (Math.floor(i*2./n_rows))*(block_dim+block_padding) - border_padding; } )
+        .attr('y', function(_, i) { return ((2*i)%n_rows)*(block_dim+block_padding) - border_padding; });
     } else {
-      riding_borders.attr('height', block_dim + 0.5*block_padding)
-        .attr('x', function(_, i) { return (Math.floor(i/n_rows))*(block_dim+block_padding) - 0.25*block_padding; } )
-        .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding) - 0.25*block_padding; });
+      riding_borders.attr('height', block_dim + 2.*border_padding)
+        .attr('x', function(_, i) { return (Math.floor(i/n_rows))*(block_dim+block_padding) - border_padding; } )
+        .attr('y', function(_, i) { return (i%n_rows)*(block_dim+block_padding) - border_padding; });
     }
+
+    if (sel_system == 'STV') { g.selectAll('.riding_border').remove(); }
   }
 
   function update_mps(g, data) {
@@ -175,7 +192,7 @@ var blocks = function() {
       .attr('x', function(_, i) { return (Math.floor(i*1./n_rows))*(block_dim+block_padding); } )
       .attr('y', function(_, i) {
 
-        return (i%n_rows)*(block_dim+block_padding)});
+    return (i%n_rows)*(block_dim+block_padding)});
   }
 
   function set_provs_translate(provs, dataz, prov_width, sel_system, sel_region) {
