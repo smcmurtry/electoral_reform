@@ -55,6 +55,7 @@ function create_g(id, width, height, margin) {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
+    .attr('class', 'top')
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 }
@@ -101,7 +102,7 @@ function draw_legend(id, entries, width, block_dim, block_padding) {
       .attr('height', block_dim)
       .attr('class', d.type + ' ' + d.class);
 
-    } else if (d.type == 'riding_border') {
+    } else if (d.type == 'riding-border') {
       g.append('rect')
       .attr('x', 0.25*block_padding)
       .attr('width', block_dim + 0.5*block_padding)
