@@ -337,3 +337,6 @@ region_number,prov_abbr,seat_type,party,riding_number
 30,PE,regional,NDP,-1
 31,NL,regional,Conservative,-1
 31,NL,regional,NDP,-1
+32,YT,regional,Conservative,-1
+33,NT,regional,NDP,-1
+34,NU,regional,NDP,-1
