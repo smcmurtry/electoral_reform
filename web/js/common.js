@@ -5,7 +5,8 @@ var voting_systems = [
   {label: 'First Past the Post', abbr: 'FPTP'},
   {label: 'Alternative Vote', abbr: 'IRV'},
   {label: 'Dual Member Proportional', abbr: 'DMP'},
-  {label: 'Mixed Member Proportional', abbr: 'MMP'}
+  {label: 'Mixed Member Proportional', abbr: 'MMP'},
+  {label: 'Single Transferable Vote', abbr: 'STV'}
 ];
 
 var provs = ['BC', 'AB', 'SK', 'MB', 'ON', 'QC', 'NB', 'NS', 'PE', 'NL', 'YT', 'NT', 'NU'];
