@@ -13,7 +13,7 @@ var blocks = function() {
       border_padding = 0.25*block_padding,
       riding_padding = 12,
       riding_border_padding = 3,
-      column_height = (block_dim + block_padding)*n_rows,
+      column_height = (block_dim + block_padding)*(n_rows-1),
       mp_padding = 2,
       mp_dim = 15;
 
@@ -156,12 +156,6 @@ var blocks = function() {
           }
 
           riding_bbox = riding.node().getBBox();
-          // riding.append('rect')
-          //   .attr('class', 'riding-border')
-          //   .attr('width', riding_bbox.width + 2.*riding_border_padding)
-          //   .attr('height', riding_bbox.height + 2.*riding_border_padding)
-          //   .attr('x', -riding_border_padding)
-          //   .attr('y', -riding_border_padding);
 
           var border_points = get_border_points(riding);
           var s = stringify_points(border_points);
