@@ -156,13 +156,19 @@ var blocks = function() {
           }
 
           riding_bbox = riding.node().getBBox();
+          // riding.append('rect')
+          //   .attr('class', 'riding-border')
+          //   .attr('width', riding_bbox.width + 2.*riding_border_padding)
+          //   .attr('height', riding_bbox.height + 2.*riding_border_padding)
+          //   .attr('x', -riding_border_padding)
+          //   .attr('y', -riding_border_padding);
 
-          riding.append('rect')
+          var border_points = get_border_points(riding);
+          var s = stringify_points(border_points);
+
+          riding.append('polygon')
             .attr('class', 'riding-border')
-            .attr('width', riding_bbox.width + 2.*riding_border_padding)
-            .attr('height', riding_bbox.height + 2.*riding_border_padding)
-            .attr('x', -riding_border_padding)
-            .attr('y', -riding_border_padding);
+            .attr('points', s);
 
           riding.attr("transform", "translate(" + riding_x + "," + riding_y + ")" );
 
@@ -180,7 +186,6 @@ var blocks = function() {
           .attr('y', region_bbox.y - border_padding)
           .attr('height', region_bbox.height + 2.*border_padding)
           .attr('width', region_bbox.width + 2.*border_padding)
-
 
       });
 
@@ -232,6 +237,31 @@ var blocks = function() {
     d['riding_number'] = +d['riding_number'];
     d['region_number'] = +d['region_number'];
     return d;
+  }
+
+  function get_border_points(g) {
+    var border_pad = 3.;//riding_padding/2.;
+    var bbox_all_mps = g.node().getBBox();
+    var bbox_last_mp = g.selectAll('.mp').last().node().getBBox();
+
+    var points = [
+      [bbox_all_mps.x-border_pad, bbox_all_mps.y-border_pad], // top-left
+      [bbox_all_mps.x-border_pad, bbox_all_mps.y+bbox_all_mps.height+border_pad], // bottom-left
+      [bbox_last_mp.x-mp_padding+border_pad, bbox_all_mps.y+bbox_all_mps.height+border_pad], // bottom-center
+      [bbox_last_mp.x-mp_padding+border_pad, bbox_last_mp.y+bbox_last_mp.height+border_pad], // center-center
+      [bbox_last_mp.x+bbox_last_mp.width+border_pad, bbox_last_mp.y+bbox_last_mp.height+border_pad], // center-right
+      [bbox_last_mp.x+bbox_last_mp.width+border_pad, bbox_all_mps.y-border_pad] // top-right
+    ];
+    return points;
+  }
+
+
+  function stringify_points(points) {
+    var string = '';
+    points.forEach(function(p) {
+      string = string.concat(p[0] + ',' + p[1] + ' ')
+    })
+    return string
   }
 
 return {

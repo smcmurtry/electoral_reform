@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Electoral Reform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="./js/d3.v3.min.js"></script>
+  <script src="./js/d3-queue.v3.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<style>
+.border {
+  fill:none;
+  stroke:black;
+  stroke-width: 2;
+}
+
+
+</style>
+
+<body>
+  <div>
+    <svg id='chart'></svg>
+
+  </div>
+</body>
+
+<script>
+var margin = {top: 50, right: 160, bottom: 0, left: 5},
+    width = 800 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom,
+    block_dim = 15,
+    padding = 10.,
+    n_rows = 6;
+
+function create_g(id, width, height, margin) {
+
+  return d3.select(id)
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr('class', 'top')
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+}
+
+// from: http://stackoverflow.com/questions/25405359/how-can-i-select-last-child-in-d3-js
+d3.selection.prototype.first = function() {
+  return d3.select(this[0][0]);
+};
+d3.selection.prototype.last = function() {
+  var last = this.size() - 1;
+  return d3.select(this[0][last]);
+};
+
+
+var g1 = create_g('#chart', width, height, margin);
+
+[0,1,2,3,4,5,6,7,8].forEach(function(n) {
+  g1.append('rect')
+    .attr('class', 'mp')
+    .attr('height', block_dim)
+    .attr('width', block_dim)
+    .attr('x', Math.floor(n/n_rows)*(block_dim+padding))
+    .attr('y', (n%n_rows)*(block_dim+padding))
+
+})
+
+
+function get_border_points(g) {
+  var border_pad = padding/2.;
+  var bbox_all_mps = g.node().getBBox();
+  var bbox_last_mp = g.selectAll('.mp').last().node().getBBox();
+
+  var points = [
+    [bbox_all_mps.x-border_pad, bbox_all_mps.y-border_pad], // top-left
+    [bbox_all_mps.x-border_pad, bbox_all_mps.y+bbox_all_mps.height+border_pad], // bottom-left
+    [bbox_last_mp.x-border_pad, bbox_all_mps.y+bbox_all_mps.height+border_pad], // bottom-center
+    [bbox_last_mp.x-border_pad, bbox_last_mp.y+bbox_last_mp.height+border_pad], // center-center
+    [bbox_last_mp.x+bbox_last_mp.width+border_pad, bbox_last_mp.y+bbox_last_mp.height+border_pad], // center-right
+    [bbox_last_mp.x+bbox_last_mp.width+border_pad, bbox_all_mps.y-border_pad] // top-right
+  ];
+  return points;
+}
+
+
+function stringify_points(points) {
+  var string = '';
+  points.forEach(function(p) {
+    string = string.concat(p[0] + ',' + p[1] + ' ')
+  })
+  return string
+}
+
+var border_points = get_border_points(g1);
+var s = stringify_points(border_points);
+// console.log(s)
+
+g1.append('polygon')
+  .attr('class', 'border')
+  .attr('points', s);
+
+
+</script>

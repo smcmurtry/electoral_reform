@@ -112,3 +112,12 @@ function draw_legend(id, entries, width, block_dim, block_padding) {
     }
   })
 }
+
+// from: http://stackoverflow.com/questions/25405359/how-can-i-select-last-child-in-d3-js
+d3.selection.prototype.first = function() {
+  return d3.select(this[0][0]);
+};
+d3.selection.prototype.last = function() {
+  var last = this.size() - 1;
+  return d3.select(this[0][last]);
+};
