@@ -196,40 +196,53 @@ var blocks = function() {
 
   function set_provs_translate(provs, sel_system, sel_region) {
     var province_x = 0,
-        province_y = 0,
-        prov_row_height = {0: 0},
+        prov_translate = [],
         prov_row = 0,
         provs_to_show = (sel_region == 'Canada') ? provs : [sel_region];
 
     provs.forEach(function(prov) {
 
+      if (provs_to_show.indexOf(prov) >= 0) {
+        var province = d3.select('g.prov.' + prov);
+        var province_bbox = province.node().getBBox();
+        if (province_x + province_bbox.width > width) {
+          province_x = 0;
+          prov_row += 1;
+        }
+        prov_translate.push({province: prov, x_translate: province_x, row_number: prov_row, height: province_bbox.height});
+        province_x += province_bbox.width + prov_x_padding;
+        }
+
+    })
+    var row_translate = 0,
+        row_translate_dict = {};
+    var all_rows = Array.from(new Set(prov_translate.map(function(d) { return d.row_number; })));
+    all_rows.forEach(function(n) {
+      row_translate_dict[n] = row_translate;
+      var provs_on_row = prov_translate.filter(function(d) { return d.row_number == n; });
+      row_height = d3.max(provs_on_row, function(d) { return d.height; });
+      row_translate += row_height + prov_y_padding;
+    });
+
+    provs.forEach(function(prov) {
       if (provs_to_show.indexOf(prov) < 0) {
         d3.select('.prov.' + prov)
           .style('display', 'none');
       } else {
-        var province = d3.select('g.prov.' + prov)
-
-        var province_bbox = province.node().getBBox();
-        prov_row_height[prov_row] = Math.max(prov_row_height[prov_row], province_bbox.height);
-
-        if (province_x + province_bbox.width > width) {
-          province_x = 0;
-          province_y += prov_row_height[prov_row] + prov_y_padding;
-          prov_row += 1;
-          prov_row_height[prov_row] = 0;
-        }
-
+        var obj = prov_translate.filter(function(d) { return d.province == prov; })[0];
+        var province = d3.select('g.prov.' + prov);
         province.style('display', 'block')
           .transition(500)
-          .attr("transform", "translate(" + province_x + "," + province_y + ")" );
+          .attr("transform", "translate(" + obj.x_translate + "," + row_translate_dict[obj.row_number] + ")" );
 
-        province_x += province_bbox.width + prov_x_padding;
         }
-    })
+    });
+
+    var chart_bbox = d3.select('#block-chart g').node().getBBox();
 
     d3.select('#block-chart')
       .transition(500)
-      .attr("height", (province_y + prov_row_height[prov_row] + prov_y_padding) + margin.top + margin.bottom);
+      .attr("height", row_translate + margin.top + margin.bottom);
   }
 
 
