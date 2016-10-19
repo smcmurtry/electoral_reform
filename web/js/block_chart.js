@@ -9,13 +9,14 @@ var blocks = function() {
       prov_x_padding = 20,
       prov_y_padding = 50,
       region_label_y_padding = 30,
-      region_x_padding = 2.*block_padding,//{'STV': 0., 'MMP': 2.*block_padding, 'FPTP': 0., 'DMP': 0., 'IRV': 0.},
+      region_x_padding = (page_w < 750) ? 6 : 16,
       border_padding = 0.25*block_padding,
-      riding_padding = 12,
-      riding_border_padding = 3,
-      column_height = (block_dim + block_padding)*(n_rows-1),
+      riding_border_padding = (page_w < 750) ? 2 : 3,
       mp_padding = 2,
-      mp_dim = 15;
+      mp_dim = (page_w < 750) ? 10 : 15,
+      riding_padding = (page_w < 750) ? 10 : 12,
+      column_height_most = (mp_dim + block_padding)*(n_rows),
+      column_height_stv = (mp_dim + block_padding)*(n_rows-1);
 
   d3.selectAll('.title').style('margin-bottom', (page_w < 750) ? '2rem' : '0px');
 
@@ -55,7 +56,7 @@ var blocks = function() {
       {label: 'Riding', class: 'x', type: 'riding-border'}
     ];
 
-    draw_legend('#chart', legend_entries, page_w, block_dim, block_padding);
+    draw_legend('#chart', legend_entries, page_w, mp_dim, block_padding);
 
     return dataz;
 
@@ -143,13 +144,14 @@ var blocks = function() {
           riding_mps.forEach(function(mp, i) {
             riding.append('rect')
               .attr('class', mp.party + ' mp')
-              .attr('width', block_dim)
-              .attr('height', block_dim)
+              .attr('width', mp_dim)
+              .attr('height', mp_dim)
               .attr('x', Math.floor(i/n_rows)*(mp_dim+mp_padding))
               .attr('y', (i%n_rows)*(mp_dim+mp_padding))
 
           });
 
+          var column_height = (sel_system == 'STV') ? column_height_stv : column_height_most;
           if (riding_y + riding.node().getBBox().height > column_height) {
             riding_y = 0;
             riding_x += riding_bbox.width + riding_padding;
