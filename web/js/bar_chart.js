@@ -1,11 +1,13 @@
 var bars = function() {
 
-  var margin = {top: 40, right: 15, bottom: 0, left: 0},
+  var margin = {top: 30, right: 15, bottom: 0, left: 0},
       width = page_w - margin.left - margin.right,
       height = 70 - margin.top - margin.bottom,
       bar_h = 30,
       bar_padding = 8,
       font_size = +d3.select('body').style('font-size').slice(0,-2);
+
+  d3.selectAll('.title').style('margin-bottom', (page_w < 750) ? '1.5rem' : '0px');
 
   var x = d3.scale.linear()
     .domain([0, 1.])
@@ -65,13 +67,14 @@ var bars = function() {
 
     function add_labels(g, rows, x_positions) {
       var padding_to_line = (page_w < 500) ? 1 : 3;
+      var y_padding_to_line = 5;
 
       var labels = g.selectAll('text').data(rows, function(d) { return d.party; });
       labels.enter().append('text');
       labels.exit().remove();
 
       labels
-        .attr('y',0.7*bar_h) // -padding_to_line)
+        .attr('y', -y_padding_to_line)
         .html(function(d) {
           if (d.value > 0.005) {
             // return d3.format('%')(d.value);
@@ -80,7 +83,7 @@ var bars = function() {
             return null;
           }})
         // .attr('fill', 'white')
-        .attr('font-size', 18)// (page_w < 500) ? 12 : 18)
+        .attr('font-size', (page_w < 500) ? 14 : 18)
         .attr('text-anchor', function(d) {
           var label_width = +d3.select(this).style('width').slice(0, -2);
           if (label_width > x(d.value)) {
@@ -110,7 +113,7 @@ var bars = function() {
         .attr('x1', function(d) { return x(x_positions[d.party] + d.value); })
         .attr('x2', function(d) { return x(x_positions[d.party] + d.value); })
         .attr('y1', 0)
-        .attr('y2', (page_w < 500) ? -13 : -19)
+        .attr('y2', -19)//(page_w < 500) ? -13 : -19)
         .style('display', function(d) { return (d.value < 0.005) ? 'none' : 'block'; } )
 
     }

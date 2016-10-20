@@ -9,7 +9,7 @@ var blocks = function() {
       prov_x_padding = 20,
       prov_y_padding = 50,
       region_label_y_padding = 30,
-      region_x_padding = (page_w < 750) ? 6 : 16,
+      region_x_padding = (page_w < 750) ? 4 : 16,
       border_padding = 0.25*block_padding,
       riding_border_padding = (page_w < 750) ? 2 : 3,
       mp_padding = 2,
@@ -18,7 +18,6 @@ var blocks = function() {
       column_height_most = (mp_dim + block_padding)*(n_rows),
       column_height_stv = (mp_dim + block_padding)*(n_rows-1);
 // console.log(page_w)
-  d3.selectAll('.title').style('margin-bottom', (page_w < 750) ? '2rem' : '0px');
 
   var g = create_g('#block-chart', width, height, margin);
 
