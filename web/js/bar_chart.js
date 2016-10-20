@@ -1,6 +1,6 @@
 var bars = function() {
 
-  var margin = {top: 40, right: 35, bottom: 0, left: 0},
+  var margin = {top: 40, right: 15, bottom: 0, left: 0},
       width = page_w - margin.left - margin.right,
       height = 70 - margin.top - margin.bottom,
       bar_h = 30,
@@ -71,7 +71,7 @@ var bars = function() {
       labels.exit().remove();
 
       labels
-        .attr('y',  -padding_to_line)
+        .attr('y',0.7*bar_h) // -padding_to_line)
         .html(function(d) {
           if (d.value > 0.005) {
             // return d3.format('%')(d.value);
@@ -79,7 +79,8 @@ var bars = function() {
           } else {
             return null;
           }})
-          .attr('font-size', (page_w < 500) ? 12 : 18)
+        // .attr('fill', 'white')
+        .attr('font-size', 18)// (page_w < 500) ? 12 : 18)
         .attr('text-anchor', function(d) {
           var label_width = +d3.select(this).style('width').slice(0, -2);
           if (label_width > x(d.value)) {

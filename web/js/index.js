@@ -1,6 +1,10 @@
 create_dropdown('#voting-system-dropdown', voting_systems);
 create_dropdown('#region-dropdown', regions);
 
+var dropdown_h = +d3.select('#nav-inner').style('height').slice(0, -2);
+d3.select('#nav').style('height', (dropdown_h+15) + 'px');
+d3.select('#top-content').style('margin-top', (dropdown_h+15) + 'px');
+
 d3.queue()
   .defer(d3.json, './data/tot_summary.json')
   .defer(d3.csv, './data/pct_summary.csv', bars.type)

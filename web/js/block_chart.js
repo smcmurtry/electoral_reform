@@ -1,6 +1,6 @@
 var blocks = function() {
 
-  var margin = {top: 50, right: 160, bottom: 0, left: 5},
+  var margin = {top: 50, right: 5, bottom: 0, left: 5},
       width = page_w - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom,
       block_dim = (page_w < 750) ? 13 : 15,//15,
@@ -17,7 +17,7 @@ var blocks = function() {
       riding_padding = (page_w < 750) ? 10 : 12,
       column_height_most = (mp_dim + block_padding)*(n_rows),
       column_height_stv = (mp_dim + block_padding)*(n_rows-1);
-
+// console.log(page_w)
   d3.selectAll('.title').style('margin-bottom', (page_w < 750) ? '2rem' : '0px');
 
   var g = create_g('#block-chart', width, height, margin);

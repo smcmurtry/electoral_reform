@@ -14,7 +14,7 @@ body {
 
 #nav {
   background-color: white;
-  height:150px;
+  /*height:150px;*/
   opacity: 1;
   left: 0;
   right: 0;
@@ -26,9 +26,9 @@ body {
 
 
 
-#top-content {
+/*#top-content {
   margin-top: 150px;
-}
+}*/
 
 #svg-chart {
   padding-top: 50px;
