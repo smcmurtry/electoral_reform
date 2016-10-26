@@ -152,3 +152,8 @@ select:focus {
 /*.region-label {*/
   /*font-size: 0.8rem;*/
 /*}*/
+
+.center {
+  text-align: center;
+  width: 100%;
+}
